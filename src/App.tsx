@@ -1,23 +1,17 @@
-import React, { useState } from "react";
+import React from 'react';
+import logo from './logo.svg';
+import './App.css';
+import Counter from './Counter';
 
-const App: React.FC = () => {
-  const [count, setCount] = useState<number>(0);
-
-  const increment = (): void => {
-    setCount(count + 1);
-  };
-
-  const decrement = (): void => {
-    setCount(count - 1);
-  };
-
+function App() {
   return (
-    <div>
-      <h2>Count: {count}</h2>
-      <button onClick={increment}>증가</button>
-      <button onClick={decrement}>감소</button>
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <Counter/>
+      </header>
     </div>
   );
-};
+}
 
 export default App;
