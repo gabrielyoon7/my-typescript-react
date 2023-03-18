@@ -1,15 +1,15 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
-const Counter: React.FC = () => {
+function Counter() {
   const [count, setCount] = useState<number>(0);
 
-  const increment = (): void => {
+  function increment(): void {
     setCount(count + 1);
-  };
+  }
 
-  const decrement = (): void => {
+  function decrement(): void {
     setCount(count - 1);
-  };
+  }
 
   return (
     <div>
@@ -18,6 +18,6 @@ const Counter: React.FC = () => {
       <button onClick={decrement}>감소</button>
     </div>
   );
-};
+}
 
 export default Counter;
