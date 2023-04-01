@@ -1,6 +1,7 @@
 import './App.css';
-import Counter1 from './containers/Counter1';
-import Counter2 from './containers/Counter2';
+import ItemArray from './containers/array/ItemArray';
+import Counter1 from './containers/counter/Counter1';
+import Counter2 from './containers/counter/Counter2';
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <hr />
       <Counter2 />
       <hr />
+      <ItemArray />
     </div>
   );
 }
