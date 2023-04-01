@@ -1,15 +1,14 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import Counter from './Counter';
+import Counter1 from './Counter1';
+import Counter2 from './Counter2';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter/>
-      </header>
+    <div>
+      <Counter1/>
+      <hr/>
+      <Counter2/>
+      <hr/>
     </div>
   );
 }

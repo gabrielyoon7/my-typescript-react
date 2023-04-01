@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function Counter() {
+function Counter1() {
   const [count, setCount] = useState<number>(0);
 
   function increment(): void {
@@ -20,4 +20,4 @@ function Counter() {
   );
 }
 
-export default Counter;
+export default Counter1;
