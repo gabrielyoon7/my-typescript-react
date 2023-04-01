@@ -20,4 +20,4 @@ function ItemArray() {
     </>
   )
 }
-export default ItemArray
+export default ItemArray;
