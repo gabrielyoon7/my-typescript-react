@@ -1,6 +1,7 @@
 import ArrayRoot from './containers/array/ArrayRoot';
 import WrapperRoot from './containers/children/WrapperRoot';
 import CounterRoot from './containers/counter/CounterRoot';
+import UseCallbackRoot from './containers/useCallback/UseCallbackRoot';
 import UseReducerRoot from './containers/useReducer/UseReducerRoot';
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
       <ArrayRoot />
       <WrapperRoot />
       <UseReducerRoot />
+      <UseCallbackRoot />
     </div>
   );
 }
