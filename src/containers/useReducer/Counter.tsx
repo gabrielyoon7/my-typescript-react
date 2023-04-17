@@ -1,6 +1,14 @@
 import React, { useReducer } from 'react';
 
-function reducer(state: any, action: any) {
+interface State {
+  count: number;
+}
+
+interface Action {
+  type: 'INCREMENT' | 'DECREMENT';
+}
+
+const reducer = (state: State, action: Action) => {
   switch (action.type) {
     case 'INCREMENT':
       return { count: state.count + 1 };
@@ -14,11 +22,11 @@ function reducer(state: any, action: any) {
 function Counter() {
   const [state, dispatch] = useReducer(reducer, { count: 0 });
 
-  function increment() {
+  const increment = () => {
     dispatch({ type: 'INCREMENT' });
   }
 
-  function decrement() {
+  const decrement = () => {
     dispatch({ type: 'DECREMENT' });
   }
 
