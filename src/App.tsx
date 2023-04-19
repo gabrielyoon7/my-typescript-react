@@ -1,4 +1,5 @@
 import ArrayRoot from './containers/array/ArrayRoot';
+import CardNumbersRoot from './containers/cardNumbers/CardNumbersRoot';
 import WrapperRoot from './containers/children/WrapperRoot';
 import CounterRoot from './containers/counter/CounterRoot';
 import UseCallbackRoot from './containers/useCallback/UseCallbackRoot';
@@ -12,6 +13,7 @@ function App() {
       <WrapperRoot />
       <UseReducerRoot />
       <UseCallbackRoot />
+      <CardNumbersRoot />
     </div>
   );
 }
