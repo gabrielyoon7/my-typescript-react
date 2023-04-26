@@ -1,7 +1,7 @@
 interface WrapperProps {
   children?: React.ReactNode;
-  //children?: React.ReactElement;
-  //children?: JSX.Element;
+  // children?: React.ReactElement;
+  // children?: JSX.Element;
 }
 function Wrapper({ children }: WrapperProps) {
   return (
