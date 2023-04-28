@@ -5,6 +5,8 @@ import CounterRoot from './containers/counter/CounterRoot';
 import CustomPasswordRoot from './containers/customPassword/CustomPasswordRoot';
 import UseCallbackRoot from './containers/useCallback/UseCallbackRoot';
 import UseReducerRoot from './containers/useReducer/UseReducerRoot';
+import AnotherApp from './containers/useSyncExternalStorage/AnotherApp';
+import TodosApp from './containers/useSyncExternalStorage/TodoApp';
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
       <UseCallbackRoot />
       <CardNumbersRoot />
       <CustomPasswordRoot />
+      <TodosApp />
+      <AnotherApp />
     </div>
   );
 }
