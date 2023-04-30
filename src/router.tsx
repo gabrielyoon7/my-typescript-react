@@ -1,6 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom';
 import ArrayRoot from './pages/array/ArrayRoot';
-import CardNumbersRoot from './pages/cardNumbers/CardNumbersRoot';
 import WrapperRoot from './pages/children/WrapperRoot';
 import CounterRoot from './pages/counter/CounterRoot';
 import CustomPasswordRoot from './pages/customPassword/CustomPasswordRoot';
@@ -8,6 +7,7 @@ import UseCallbackRoot from './pages/useCallback/UseCallbackRoot';
 import UseReducerRoot from './pages/useReducer/UseReducerRoot';
 import HomeLayout from './components/HomeLayout';
 import UseSyncExternalStorageRoot from './pages/useSyncExternalStorage/UseSyncExternalStorageRoot';
+import FunctionContextAPIRoot from './pages/functionalContextAPI/FunctionContextAPIRoot';
 
 export const homeChildren = [
   {
@@ -16,44 +16,44 @@ export const homeChildren = [
     title: 'Home'
   },
   {
-    path: '/array',
-    element: <ArrayRoot />,
-    title: 'ArrayRoot'
+    path: '/counter',
+    element: <CounterRoot />,
+    title: '카운터 예제 for typescript'
   },
   {
-    path: '/card-number',
-    element: <CardNumbersRoot />,
-    title: 'CardNumbersRoot'
+    path: '/array',
+    element: <ArrayRoot />,
+    title: '배열 예제 for typescript'
   },
   {
     path: '/wrapper',
     element: <WrapperRoot />,
-    title: 'WrapperRoot'
-  },
-  {
-    path: '/counter',
-    element: <CounterRoot />,
-    title: 'CounterRoot'
+    title: 'Wrapper 컴포넌트 테스트'
   },
   {
     path: '/custom-password',
     element: <CustomPasswordRoot />,
-    title: 'CounterRoot'
+    title: '커스텀 패스워드'
   },
   {
     path: '/use-callback',
     element: <UseCallbackRoot />,
-    title: 'UseCallbackRoot'
+    title: 'UseCallback 예제'
   },
   {
     path: '/use-reducer',
     element: <UseReducerRoot />,
-    title: 'UseReducerRoot'
+    title: 'UseReducer 예제'
+  },
+  {
+    path: '/context-api',
+    element: <FunctionContextAPIRoot />,
+    title: 'Context API 예제'
   },
   {
     path: '/use-sync-external-storage',
     element: <UseSyncExternalStorageRoot />,
-    title: 'UseSyncExternalStorageRoot'
+    title: 'UseSyncExternalStorage 예제'
   },
 ]
 
