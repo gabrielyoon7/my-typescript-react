@@ -8,6 +8,7 @@ import UseReducerRoot from './pages/useReducer/UseReducerRoot';
 import HomeLayout from './components/HomeLayout';
 import UseSyncExternalStorageRoot from './pages/useSyncExternalStorage/UseSyncExternalStorageRoot';
 import FunctionContextAPIRoot from './pages/functionalContextAPI/FunctionContextAPIRoot';
+import UserIdRoot from './pages/useId/UserIdRoot';
 
 export const homeChildren = [
   {
@@ -53,8 +54,14 @@ export const homeChildren = [
   {
     path: '/use-sync-external-storage',
     element: <UseSyncExternalStorageRoot />,
-    title: 'UseSyncExternalStorage 예제'
+    title: 'useSyncExternalStorage 예제'
   },
+  {
+    path: '/use-id',
+    element: <UserIdRoot />,
+    title: 'userId 예제'
+  },
+
 ]
 
 const router = createBrowserRouter([
