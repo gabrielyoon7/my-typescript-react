@@ -9,6 +9,7 @@ import HomeLayout from './components/HomeLayout';
 import UseSyncExternalStorageRoot from './pages/useSyncExternalStorage/UseSyncExternalStorageRoot';
 import FunctionContextAPIRoot from './pages/functionalContextAPI/FunctionContextAPIRoot';
 import UserIdRoot from './pages/useId/UserIdRoot';
+import Tearing from './pages/tearing/Tearing';
 
 export const homeChildren = [
   {
@@ -61,7 +62,11 @@ export const homeChildren = [
     element: <UserIdRoot />,
     title: 'userId 예제'
   },
-
+  {
+    path: '/tearing',
+    element: <Tearing />,
+    title: 'tearing 예제'
+  },
 ]
 
 const router = createBrowserRouter([
