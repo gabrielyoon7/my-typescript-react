@@ -10,6 +10,7 @@ import UseSyncExternalStorageRoot from './pages/useSyncExternalStorage/UseSyncEx
 import FunctionContextAPIRoot from './pages/functionalContextAPI/FunctionContextAPIRoot';
 import UserIdRoot from './pages/useId/UserIdRoot';
 import Tearing from './pages/tearing/Tearing';
+import StartTransition from './pages/startTransition/StartTransition';
 
 export const homeChildren = [
   {
@@ -66,6 +67,11 @@ export const homeChildren = [
     path: '/tearing',
     element: <Tearing />,
     title: 'tearing 예제'
+  },
+  {
+    path: '/start-transition',
+    element: <StartTransition />,
+    title: 'StartTransition 예제'
   },
 ]
 
