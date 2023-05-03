@@ -11,11 +11,17 @@ const useMouseX = () => {
   }, []);
   return ref.current;
 };
+
 const MousePositionX = () => {
   const x = useMouseX();
   const start = performance.now();
   while (performance.now() - start < 20) { }
-  return <div>Mouse X : {x}</div>;
+  return (
+    <div style={{ margin: '8px' }}>
+      <div style={{ display: 'flex', justifyContent: 'center' }}>MouseX</div>
+      <div style={{ display: 'flex', justifyContent: 'center' }}>{x}</div>
+    </div>
+  );
 };
 
 const Tearing = () => {
@@ -25,12 +31,21 @@ const Tearing = () => {
       setCount((c: any) => c + 1);
     })
   };
-  return (<div>
-    {count} <button onClick={inc}>click</button>
-    {[...Array(50).fill(null)].map((_, key) => (
-      <MousePositionX key={key} />
-    ))}
-  </div>
+  return (
+    <div>
+      <div style={{ display: 'flex', padding: '4px' }}>
+        <div style={{ margin: '8px', width: '100px' }}>Count: {count}</div>
+        <button style={{ width: '100%' }} onClick={inc}>Click and Move Mouse Anywhere</button>
+      </div>
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(5, 1fr)'
+      }}>
+        {[...Array(50).fill(null)].map((_, key) => (
+          <MousePositionX key={key} />
+        ))}
+      </div>
+    </div>
   );
 }
 export default Tearing;
