@@ -10,6 +10,7 @@ const StartTransition = () => {
      * 증가 버튼을 연타하는 경우 결과가 다르게 나옴
      *  */
     startTransition(() => {
+      console.log(`try to setCount : ${count}`);
       setCount(count + 1);
     });
     // 딜레이 유발
