@@ -82,7 +82,7 @@ const router = createBrowserRouter([
     children: homeChildren,
   },
 ], {
-  basename: '/'
+  basename: '/my-typescript-react'
 });
 
 export default router;
