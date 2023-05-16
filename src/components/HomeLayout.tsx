@@ -12,7 +12,7 @@ function HomeLayout() {
       <div>
         {homeChildren.map((child, i) => (
           <div key={`home-route-${i}`}>
-            <a href="" onClick={() => navigate(child.path)}>{child.title}</a>
+            <div style={{ cursor: 'pointer', margin: '10px 0px' }} onClick={() => navigate(child.path)}>{child.title}</div>
           </div>
         ))}
       </div>
