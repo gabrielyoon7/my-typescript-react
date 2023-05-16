@@ -11,6 +11,7 @@ import FunctionContextAPIRoot from './pages/functionalContextAPI/FunctionContext
 import UserIdRoot from './pages/useId/UserIdRoot';
 import TearingRoot from './pages/tearing/TearingRoot';
 import TransitionRoot from './pages/startTransition/TransitionRoot';
+import OptimizationRoot from './pages/optimization/OptimizationRoot';
 
 export const homeChildren = [
   {
@@ -72,6 +73,11 @@ export const homeChildren = [
     path: '/start-transition',
     element: <TransitionRoot />,
     title: 'StartTransition 예제'
+  },
+  {
+    path: '/optimization',
+    element: <OptimizationRoot />,
+    title: '최적화 예제'
   },
 ]
 
