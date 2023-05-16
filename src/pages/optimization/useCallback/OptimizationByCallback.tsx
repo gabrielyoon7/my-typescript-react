@@ -1,27 +1,38 @@
-import { memo, useMemo, useState } from "react";
+/* eslint-disable @typescript-eslint/no-empty-function */
+import { memo, useCallback, useMemo, useState } from "react";
 
-function Box({ params }: {
-  params: { color: string }
+function Box({ params, onClick }: {
+  params: { color: string };
+  onClick: () => void;
 }) {
   console.log(`Box 렌더링 됨 : ${params.color}`)
   return (
-    <div style={{ width: "100px", height: "100px", margin: '3px', backgroundColor: params.color }} />
+    <div
+      style={{
+        width: "100px",
+        height: "100px",
+        margin: '3px',
+        backgroundColor: params.color
+      }}
+      onClick={onClick}
+    />
   )
 }
 
 const MemoedBox = memo(Box);
 
-function Optimization() {
+function OptimizationByCallback() {
   const [appRenderCount, setAppRenderCount] = useState(0);
   const [color, setColor] = useState('red');
 
   console.log(`랜더링 횟수 : ${appRenderCount}`);
 
   const params = useMemo(() => ({ color }), [color]);
+  const onClick = useCallback(() => { }, []);
 
   return (
     <>
-      <MemoedBox params={params} />
+      <MemoedBox params={params} onClick={onClick} />
       <button
         onClick={() => setAppRenderCount(appRenderCount + 1)}
       >
@@ -36,4 +47,4 @@ function Optimization() {
   )
 }
 
-export default Optimization;
+export default OptimizationByCallback;
