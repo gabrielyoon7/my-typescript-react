@@ -9,12 +9,12 @@ import HomeLayout from './components/HomeLayout';
 import UseSyncExternalStorageRoot from './pages/useSyncExternalStorage/UseSyncExternalStorageRoot';
 import FunctionContextAPIRoot from './pages/functionalContextAPI/FunctionContextAPIRoot';
 import UserIdRoot from './pages/useId/UserIdRoot';
-import Tearing from './pages/tearing/Tearing';
 import StartTransition from './pages/startTransition/StartTransition';
+import TearingRoot from './pages/tearing/TearingRoot';
 
 export const homeChildren = [
   {
-    path: '',
+    path: '/.',
     element: <></>,
     title: 'Home'
   },
@@ -65,7 +65,7 @@ export const homeChildren = [
   },
   {
     path: '/tearing',
-    element: <Tearing />,
+    element: <TearingRoot />,
     title: 'tearing 예제'
   },
   {
