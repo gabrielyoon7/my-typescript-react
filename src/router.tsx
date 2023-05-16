@@ -15,7 +15,7 @@ import OptimizationRoot from './pages/optimization/OptimizationRoot';
 
 export const homeChildren = [
   {
-    path: '/.',
+    path: '',
     element: <></>,
     title: 'Home'
   },
@@ -88,7 +88,7 @@ const router = createBrowserRouter([
     children: homeChildren,
   },
 ], {
-  basename: '/my-typescript-react'
+  basename: '/my-typescript-react/'
 });
 
 export default router;
