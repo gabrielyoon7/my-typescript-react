@@ -9,8 +9,8 @@ import HomeLayout from './components/HomeLayout';
 import UseSyncExternalStorageRoot from './pages/useSyncExternalStorage/UseSyncExternalStorageRoot';
 import FunctionContextAPIRoot from './pages/functionalContextAPI/FunctionContextAPIRoot';
 import UserIdRoot from './pages/useId/UserIdRoot';
-import StartTransition from './pages/startTransition/StartTransition';
 import TearingRoot from './pages/tearing/TearingRoot';
+import TransitionRoot from './pages/startTransition/TransitionRoot';
 
 export const homeChildren = [
   {
@@ -70,7 +70,7 @@ export const homeChildren = [
   },
   {
     path: '/start-transition',
-    element: <StartTransition />,
+    element: <TransitionRoot />,
     title: 'StartTransition 예제'
   },
 ]
