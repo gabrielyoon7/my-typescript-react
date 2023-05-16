@@ -1,4 +1,4 @@
-import { memo, useState } from "react";
+import { memo, useMemo, useState } from "react";
 
 function Box({ params }: {
   params: { color: string }
@@ -11,15 +11,17 @@ function Box({ params }: {
 
 const MemoedBox = memo(Box);
 
-function NonOptimization() {
+function Optimization() {
   const [appRenderCount, setAppRenderCount] = useState(0);
   const [color, setColor] = useState('red');
 
   console.log(`랜더링 횟수 : ${appRenderCount}`);
 
+  const params = useMemo(() => ({ color }), [color]);
+
   return (
     <>
-      <MemoedBox params={{ color }} />
+      <MemoedBox params={params} />
       <button
         onClick={() => setAppRenderCount(appRenderCount + 1)}
       >
@@ -34,4 +36,4 @@ function NonOptimization() {
   )
 }
 
-export default NonOptimization;
+export default Optimization;
