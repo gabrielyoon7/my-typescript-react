@@ -12,6 +12,7 @@ import UserIdRoot from './pages/useId/UserIdRoot';
 import TearingRoot from './pages/tearing/TearingRoot';
 import TransitionRoot from './pages/startTransition/TransitionRoot';
 import OptimizationRoot from './pages/optimization/OptimizationRoot';
+import Temp from './pages/Temp';
 
 export const homeChildren = [
   {
@@ -78,6 +79,11 @@ export const homeChildren = [
     path: '/optimization',
     element: <OptimizationRoot />,
     title: '최적화 예제'
+  },
+  {
+    path: '/temp',
+    element: <Temp />,
+    title: '임시 페이지'
   },
 ]
 
