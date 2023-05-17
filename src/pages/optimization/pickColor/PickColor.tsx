@@ -1,4 +1,13 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, memo, useState } from "react";
+
+function Box({ color }: { color: string }) {
+  console.log(`rendered: ${color}`)
+  return (
+    <div style={{ height: '100px', width: '100px', margin: '5px', backgroundColor: color }}></div>
+  )
+}
+
+const MemoedBox = memo(Box);
 
 function PickColor() {
   const [value, setValue] = useState('#000000');
@@ -13,8 +22,15 @@ function PickColor() {
 
   return (
     <div>
-      <div>RGB: {value} / count: {count}</div>
-      <input type='color' value={value} onChange={changeColor} />
+
+      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+        <div>RGB: {value} / count: {count}</div>
+        <input type='color' value={value} onChange={changeColor} />
+      </div>
+      <div>
+        <MemoedBox color={value} />
+        <MemoedBox color="red" />
+      </div>
     </div>
   )
 }
