@@ -22,12 +22,12 @@
       // https://username.github.io/repo-name/one/two?a=b&c=d#qwe becomes
       // https://username.github.io/repo-name/?/one/two&a=b~and~c=d#qwe
       // Otherwise, leave pathSegmentsToKeep as 0.
-      var pathSegmentsToKeep = 1;
-
-      alert("404");
-      alert(JSON.stringify(window.location))
-      console.log("404");
-      console.log(JSON.stringify(window.location))
+      var pathSegmentsToKeep = 1; // 이 부분을 0에서 1로 수정해줬더니 풀림
+      //
+      // alert("404");
+      // alert(JSON.stringify(window.location))
+      // console.log("404");
+      // console.log(JSON.stringify(window.location))
 
       var l = window.location;
       l.replace(
@@ -37,7 +37,7 @@
         (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
         l.hash
       );
-      alert(JSON.stringify(l))
+      // alert(JSON.stringify(l))
 
     </script>
 </head>
