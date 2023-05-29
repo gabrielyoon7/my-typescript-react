@@ -24,6 +24,11 @@
       // Otherwise, leave pathSegmentsToKeep as 0.
       var pathSegmentsToKeep = 0;
 
+      alert("404");
+      alert(JSON.stringify(window.location))
+      console.log("404");
+      console.log(JSON.stringify(window.location))
+
       var l = window.location;
       l.replace(
         l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
