@@ -14,6 +14,7 @@ import TransitionRoot from './pages/startTransition/TransitionRoot';
 import OptimizationRoot from './pages/optimization/OptimizationRoot';
 import Temp from './pages/Temp';
 import UseTransitionRoot from "./pages/useTransition/UseTransitionRoot.tsx";
+import UseFetchRoot from './pages/useFetch/UseFetchRoot.tsx';
 
 export const homeChildren = [
   {
@@ -85,6 +86,11 @@ export const homeChildren = [
     path: '/useTransition',
     element: <UseTransitionRoot />,
     title: 'useTransition 예제'
+  },
+  {
+    path: '/useFetch',
+    element: <UseFetchRoot />,
+    title: 'useFetch 예제'
   },
   {
     path: '/temp',
