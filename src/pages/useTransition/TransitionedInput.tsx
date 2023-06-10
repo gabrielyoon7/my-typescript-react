@@ -1,4 +1,4 @@
-import {ChangeEvent, useState, useTransition} from "react"
+import { ChangeEvent, useState, useTransition } from "react"
 
 function TransitionedInput() {
   const [input, setInput] = useState("")
@@ -21,7 +21,7 @@ function TransitionedInput() {
 
   return (
     <>
-      <input type="text" value={input} onChange={handleChange}/>
+      <input type="text" value={input} onChange={handleChange} />
       {
         isPending
           ? 'Loading...'

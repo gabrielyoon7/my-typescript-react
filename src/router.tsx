@@ -16,6 +16,7 @@ import Temp from './pages/Temp';
 import UseTransitionRoot from "./pages/useTransition/UseTransitionRoot.tsx";
 import UseFetchRoot from './pages/useFetch/UseFetchRoot.tsx';
 import UseDeferredValueRoot from './pages/useDeferredValue/UseDeferredValueRoot.tsx';
+import DynamicTableRoot from './pages/dynamcTable/DynamicTableRoot.tsx';
 
 export const homeChildren = [
   {
@@ -42,6 +43,11 @@ export const homeChildren = [
     path: '/custom-password',
     element: <CustomPasswordRoot />,
     title: '커스텀 패스워드'
+  },
+  {
+    path: '/dynamic-table',
+    element: <DynamicTableRoot />,
+    title: '동적 테이블'
   },
   {
     path: '/use-callback',
