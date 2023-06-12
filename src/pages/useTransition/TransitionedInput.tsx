@@ -1,4 +1,4 @@
-import { ChangeEvent, useState, useTransition } from "react"
+import {ChangeEvent, useState, useTransition} from "react"
 
 function TransitionedInput() {
   const [input, setInput] = useState("")
@@ -10,18 +10,18 @@ function TransitionedInput() {
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
     setInput(e.target.value)
     startTransition(() => {
-      const l: string[] = []
+      const temp: string[] = []
 
       for (let i = 0; i < LIST_SIZE; i++) {
-        l.push(e.target.value)
-        setList(l)
+        temp.push(e.target.value)
+        setList(temp)
       }
     })
   }
 
   return (
     <>
-      <input type="text" value={input} onChange={handleChange} />
+      <input type="text" value={input} onChange={handleChange}/>
       {
         isPending
           ? 'Loading...'

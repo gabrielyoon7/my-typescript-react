@@ -8,11 +8,11 @@ function StartTransitionedInput() {
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
     setInput(e.target.value)
     startTransition(() => {
-      const l: string[] = []
+      const temp: string[] = []
 
       for (let i = 0; i < LIST_SIZE; i++) {
-        l.push(e.target.value)
-        setList(l)
+        temp.push(e.target.value)
+        setList(temp)
       }
     })
   }

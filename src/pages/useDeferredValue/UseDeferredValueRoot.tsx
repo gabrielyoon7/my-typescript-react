@@ -5,7 +5,7 @@ function UseDeferredValueRoot() {
     <>
       <h1>useDeferredValue 예제</h1>
       <div>
-        <h2>useDefferedValue with useMemo</h2>
+        <h2>useDeferredValue with useMemo</h2>
         <UseDeferredValueWithUseMemo/>
       </div>
     </>
