@@ -1,11 +1,12 @@
-import UseDeferredValue from './UseDeferredValue'
+import UseDeferredValueWithUseMemo from './withUseMemo/UseDeferredValueWithUseMemo.tsx'
 
 function UseDeferredValueRoot() {
   return (
     <>
-      <div>useDeferredValue</div>
+      <h1>useDeferredValue 예제</h1>
       <div>
-        <UseDeferredValue />
+        <h2>useDefferedValue with useMemo</h2>
+        <UseDeferredValueWithUseMemo/>
       </div>
     </>
   )

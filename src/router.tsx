@@ -1,4 +1,4 @@
-import { createBrowserRouter } from 'react-router-dom';
+import {createBrowserRouter} from 'react-router-dom';
 import ArrayRoot from './pages/array/ArrayRoot';
 import WrapperRoot from './pages/children/WrapperRoot';
 import CounterRoot from './pages/counter/CounterRoot';
@@ -26,87 +26,87 @@ export const homeChildren = [
   },
   {
     path: '/counter',
-    element: <CounterRoot />,
+    element: <CounterRoot/>,
     title: '카운터 예제 for typescript'
   },
   {
     path: '/array',
-    element: <ArrayRoot />,
+    element: <ArrayRoot/>,
     title: '배열 예제 for typescript'
   },
   {
     path: '/wrapper',
-    element: <WrapperRoot />,
+    element: <WrapperRoot/>,
     title: 'Wrapper 컴포넌트 테스트'
   },
   {
     path: '/custom-password',
-    element: <CustomPasswordRoot />,
+    element: <CustomPasswordRoot/>,
     title: '커스텀 패스워드'
   },
   {
     path: '/dynamic-table',
-    element: <DynamicTableRoot />,
+    element: <DynamicTableRoot/>,
     title: '동적 테이블'
   },
   {
     path: '/use-callback',
-    element: <UseCallbackRoot />,
+    element: <UseCallbackRoot/>,
     title: 'UseCallback 예제'
   },
   {
     path: '/use-reducer',
-    element: <UseReducerRoot />,
+    element: <UseReducerRoot/>,
     title: 'UseReducer 예제'
   },
   {
     path: '/context-api',
-    element: <FunctionContextAPIRoot />,
+    element: <FunctionContextAPIRoot/>,
     title: 'Context API 예제'
   },
   {
     path: '/use-sync-external-storage',
-    element: <UseSyncExternalStorageRoot />,
+    element: <UseSyncExternalStorageRoot/>,
     title: 'useSyncExternalStorage 예제'
   },
   {
     path: '/use-id',
-    element: <UserIdRoot />,
+    element: <UserIdRoot/>,
     title: 'userId 예제'
   },
   {
     path: '/tearing',
-    element: <TearingRoot />,
+    element: <TearingRoot/>,
     title: 'tearing 예제'
   },
   {
     path: '/start-transition',
-    element: <TransitionRoot />,
+    element: <TransitionRoot/>,
     title: 'StartTransition 예제'
   },
   {
     path: '/optimization',
-    element: <OptimizationRoot />,
+    element: <OptimizationRoot/>,
     title: '최적화 예제'
   },
   {
     path: '/useTransition',
-    element: <UseTransitionRoot />,
+    element: <UseTransitionRoot/>,
     title: 'useTransition 예제'
   },
   {
     path: '/useDeferredValue',
-    element: <UseDeferredValueRoot />,
+    element: <UseDeferredValueRoot/>,
     title: 'useDeferredValue 예제'
   },
   {
     path: '/useFetch',
-    element: <UseFetchRoot />,
+    element: <UseFetchRoot/>,
     title: 'useFetch 예제'
   },
   {
     path: '/temp',
-    element: <Temp />,
+    element: <Temp/>,
     title: '임시 페이지'
   },
 ]
@@ -114,7 +114,7 @@ export const homeChildren = [
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <HomeLayout />,
+    element: <HomeLayout/>,
     children: homeChildren,
   },
 ], {
