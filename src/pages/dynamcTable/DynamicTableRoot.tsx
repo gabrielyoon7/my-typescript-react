@@ -1,11 +1,13 @@
 import Table from './Table';
-import posts from './posts.json';
+import {useState} from "react";
 
 function DynamicTableRoot() {
+  const [data, setData] = useState([]);
+
   return (
     <>
       <div>DynamicTableRoot</div>
-      <Table data={posts} rowsPerPage={10} />
+      <Table data={data} rowsPerPage={10}/>
     </>
   )
 }
