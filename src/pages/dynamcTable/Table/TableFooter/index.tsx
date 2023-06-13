@@ -7,7 +7,7 @@ interface TableFooterProps {
   range: number[];
   setPage: React.Dispatch<React.SetStateAction<number>>;
   page: number;
-  slice: never[];
+  slice: Record<string, unknown>[];
 }
 
 function TableFooter({range, setPage, page, slice}: TableFooterProps) {

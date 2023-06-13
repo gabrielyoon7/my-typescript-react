@@ -1,11 +1,11 @@
 // @/src/components/Table/index.tsx
-import React, {useState} from "react";
+import React, {ReactNode, useState} from "react";
 import useTable from "./hooks/useTable";
 import styles from "./Table.module.css";
 import TableFooter from "./TableFooter";
 
 interface TableProps {
-  data: never[];
+  data: Record<string, unknown>[];
   rowsPerPage: number;
 }
 
@@ -28,7 +28,14 @@ function Table({data, rowsPerPage}: TableProps) {
                 <tbody>
                 {slice.map((el) => (
                   <tr className={styles.tableRowItems} key={Math.random()}>
-                    {Object.keys(el).map((col) => (<td key={Math.random()} className={styles.tableCell}>{el[col]}</td>))}
+                    {Object.keys(el).map((col) => (
+                      <td
+                        key={Math.random()}
+                        className={styles.tableCell}
+                      >
+                        {el[col] as ReactNode}
+                      </td>
+                    ))}
                   </tr>
                 ))}
                 </tbody>
