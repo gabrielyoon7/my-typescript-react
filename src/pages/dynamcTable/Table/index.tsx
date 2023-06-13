@@ -5,11 +5,11 @@ import styles from "./Table.module.css";
 import TableFooter from "./TableFooter";
 
 interface TableProps {
-  data: any; // 수정이 필요한 부분
+  data: never[];
   rowsPerPage: number;
 }
 
-const Table: React.FC<TableProps> = ({data, rowsPerPage}) => {
+function Table({data, rowsPerPage}: TableProps) {
   const [page, setPage] = useState<number>(1);
   const {slice, range} = useTable(data, page, rowsPerPage);
 
@@ -49,6 +49,6 @@ const Table: React.FC<TableProps> = ({data, rowsPerPage}) => {
       }
     </>
   );
-};
+}
 
 export default Table;

@@ -7,10 +7,10 @@ interface TableFooterProps {
   range: number[];
   setPage: React.Dispatch<React.SetStateAction<number>>;
   page: number;
-  slice: any[];
+  slice: never[];
 }
 
-const TableFooter = ({range, setPage, page, slice}: TableFooterProps) => {
+function TableFooter({range, setPage, page, slice}: TableFooterProps) {
   useEffect(() => {
     if (slice.length < 1 && page !== 1) {
       setPage(page - 1);
@@ -44,6 +44,6 @@ const TableFooter = ({range, setPage, page, slice}: TableFooterProps) => {
       ))}
     </div>
   );
-};
+}
 
 export default TableFooter;
