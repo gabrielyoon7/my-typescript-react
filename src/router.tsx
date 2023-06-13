@@ -17,6 +17,7 @@ import UseTransitionRoot from "./pages/useTransition/UseTransitionRoot.tsx";
 import UseFetchRoot from './pages/useFetch/UseFetchRoot.tsx';
 import UseDeferredValueRoot from './pages/useDeferredValue/UseDeferredValueRoot.tsx';
 import DynamicTableRoot from './pages/dynamcTable/DynamicTableRoot.tsx';
+import BatchRoot from "./pages/batch/BatchRoot.tsx";
 
 export const homeChildren = [
   {
@@ -103,6 +104,11 @@ export const homeChildren = [
     path: '/useFetch',
     element: <UseFetchRoot/>,
     title: 'useFetch 예제'
+  },
+  {
+    path: '/batch',
+    element: <BatchRoot/>,
+    title: 'batch 예제'
   },
   {
     path: '/temp',
