@@ -10,6 +10,7 @@ async function main() {
     serviceWorker: {
       url: '/my-typescript-react/mockServiceWorker.js',
     },
+    onUnhandledRequest: 'bypass',
   })
 
   ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
