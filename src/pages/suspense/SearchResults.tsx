@@ -1,43 +1,36 @@
-import {Album, fetchData} from "./data.ts";
+import {useEffect, useState} from "react";
+import {Photo} from "../../types/common.ts";
 
 export default function SearchResults({query}: { query: string }) {
-  if (query === '') {
+  const [photos, setPhotos] = useState<Photo[]>([]);
+
+  const updatePhotos = async (q: string) => {
+    try {
+      const response = await fetch(`/photos?query=${q}`);
+      const data = await response.json();
+      setPhotos(data);
+    } catch (err) {
+      throw new Error();
+    }
+  };
+
+  useEffect(() => {
+    updatePhotos(query);
+  }, [query]);
+
+  if (query === "") {
     return null;
   }
-  const albums: Album[] = use(fetchData(`/search?q=${query}`));
-  if (albums.length === 0) {
-    return <p>No matches for <i>"{query}"</i></p>;
+
+  if (photos.length === 0) {
+    throw updatePhotos(query); // Throw the promise to trigger suspense
   }
+
   return (
     <ul>
-      {albums.map(album => (
-        <li key={album.id}>
-          {album.title} ({album.year})
-        </li>
+      {photos.map((photo) => (
+        <li key={photo.id}>{photo.title}</li>
       ))}
     </ul>
   );
-}
-
-function use(promise: any) {
-  if (promise.status === 'fulfilled') {
-    return promise.value;
-  } else if (promise.status === 'rejected') {
-    throw promise.reason;
-  } else if (promise.status === 'pending') {
-    throw promise;
-  } else {
-    promise.status = 'pending';
-    promise.then(
-      (result: any) => {
-        promise.status = 'fulfilled';
-        promise.value = result;
-      },
-      (reason: any) => {
-        promise.status = 'rejected';
-        promise.reason = reason;
-      },
-    );
-    throw promise;
-  }
 }

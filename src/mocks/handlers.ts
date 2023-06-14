@@ -1,6 +1,7 @@
 // src/mocks/handlers.js
 import {rest} from 'msw'
 import todos from './json-placeholders/todos.json';
+import photos from './json-placeholders/photos.json';
 
 export const handlers = [
   rest.post('/login', (req, res, ctx) => {
@@ -42,14 +43,33 @@ export const handlers = [
     if (query) {
       const matches = todos.filter((todo) => todo.title.includes(query)).map(todo => todo.title);
       return res(
-        ctx.delay(2000),
+        ctx.delay(1000),
         ctx.status(200),
         ctx.json(matches),
       )
     }
 
     return res(
-      ctx.delay(1000),
+      ctx.delay(500),
+      ctx.status(200),
+      ctx.json([]),
+    )
+  }),
+
+  rest.get('/photos', (req, res, ctx) => {
+    const query = req.url.searchParams.get('query')
+    console.log(query);
+    if (query) {
+      const matches = photos.filter((photo) => photo.title.includes(query));
+      return res(
+        ctx.delay(1000),
+        ctx.status(200),
+        ctx.json(matches),
+      )
+    }
+
+    return res(
+      ctx.delay(500),
       ctx.status(200),
       ctx.json([]),
     )

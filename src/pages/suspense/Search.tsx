@@ -6,7 +6,7 @@ export default function Search() {
   return (
     <>
       <label>
-        Search albums:
+        Search photos:
         <input value={query} onChange={e => setQuery(e.target.value)}/>
       </label>
       <Suspense fallback={<h2>Loading...</h2>}>
