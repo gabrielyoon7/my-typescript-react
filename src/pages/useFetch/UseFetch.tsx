@@ -1,10 +1,11 @@
 import useFetch from "./hooks/useFetch";
 
 function UseFetch() {
-  const { data, isLoading, error } = useFetch('https://jsonplaceholder.typicode.com/users');
+  const {data, isLoading, error} = useFetch('https://jsonplaceholder.typicode.com/users');
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return new Promise((resolve, reject) => {
+    })
   }
 
   if (error) {

@@ -9,7 +9,7 @@ export default function Search() {
         Search photos:
         <input value={query} onChange={e => setQuery(e.target.value)}/>
       </label>
-      <Suspense fallback={<h2>Loading...</h2>}>
+      <Suspense fallback={<h1>Loading by Suspense...</h1>}>
         <SearchResults query={query}/>
       </Suspense>
     </>

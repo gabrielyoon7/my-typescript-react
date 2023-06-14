@@ -1,29 +1,20 @@
-import {useEffect, useState} from "react";
 import {Photo} from "../../types/common.ts";
+import useFetch from "./hooks/useFetch.ts";
 
 export default function SearchResults({query}: { query: string }) {
-  const [photos, setPhotos] = useState<Photo[]>([]);
+  const {data: photos, isLoading, error} = useFetch<Photo[]>(`/photos?query=${query}`);
 
-  const updatePhotos = async (q: string) => {
-    try {
-      const response = await fetch(`/photos?query=${q}`);
-      const data = await response.json();
-      setPhotos(data);
-    } catch (err) {
-      throw new Error();
-    }
-  };
-
-  useEffect(() => {
-    updatePhotos(query);
-  }, [query]);
-
-  if (query === "") {
+  if (photos === null || error !== null) {
     return null;
   }
 
+  if (isLoading) {
+    throw new Promise(() => {
+    });
+  }
+
   if (photos.length === 0) {
-    throw updatePhotos(query); // Throw the promise to trigger suspense
+    return <p>No matches for <i>"{query}"</i></p>;
   }
 
   return (
