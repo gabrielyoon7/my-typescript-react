@@ -18,6 +18,7 @@ import UseFetchRoot from './pages/useFetch/UseFetchRoot.tsx';
 import UseDeferredValueRoot from './pages/useDeferredValue/UseDeferredValueRoot.tsx';
 import DynamicTableRoot from './pages/dynamcTable/DynamicTableRoot.tsx';
 import BatchRoot from "./pages/batch/BatchRoot.tsx";
+import SuspenseRoot from "./pages/suspense/SuspenseRoot.tsx";
 
 export const homeChildren = [
   {
@@ -108,7 +109,12 @@ export const homeChildren = [
   {
     path: '/batch',
     element: <BatchRoot/>,
-    title: 'batch 예제'
+    title: 'batch 예제 (React 17/18 변경하면서 테스트)'
+  },
+  {
+    path: '/suspense',
+    element: <SuspenseRoot/>,
+    title: 'Suspense 예제',
   },
   {
     path: '/temp',
