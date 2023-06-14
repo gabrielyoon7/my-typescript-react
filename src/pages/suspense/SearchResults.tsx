@@ -9,6 +9,7 @@ export default function SearchResults({query}: { query: string }) {
   }
 
   if (isLoading) {
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
     throw new Promise(() => {
     });
   }
