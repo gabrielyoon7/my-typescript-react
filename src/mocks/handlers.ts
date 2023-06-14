@@ -1,5 +1,6 @@
 // src/mocks/handlers.js
 import {rest} from 'msw'
+import todos from './json-placeholders/todos.json';
 
 export const handlers = [
   rest.post('/login', (req, res, ctx) => {
@@ -32,6 +33,25 @@ export const handlers = [
       ctx.json({
         username: 'admin',
       }),
+    )
+  }),
+
+  rest.get('/todos', (req, res, ctx) => {
+    const query = req.url.searchParams.get('query')
+    console.log(query);
+    if (query) {
+      const matches = todos.filter((todo) => todo.title.includes(query)).map(todo => todo.title);
+      return res(
+        ctx.delay(2000),
+        ctx.status(200),
+        ctx.json(matches),
+      )
+    }
+
+    return res(
+      ctx.delay(1000),
+      ctx.status(200),
+      ctx.json([]),
     )
   }),
 ]
