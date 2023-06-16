@@ -6,6 +6,6 @@ function CustomPasswordRoot() {
       <CustomPassword />
       <hr />
     </>
-  )
+  );
 }
 export default CustomPasswordRoot;

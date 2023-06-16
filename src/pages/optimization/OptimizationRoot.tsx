@@ -23,7 +23,7 @@ function OptimizationRoot() {
       <h2>최적화가 안된 예제</h2>
       <PickColor />
     </>
-  )
+  );
 }
 
 export default OptimizationRoot;

@@ -54,6 +54,6 @@ function CustomPassword() {
         ↑ 진짜 패스워드
       </div>
     </div>
-  )
+  );
 }
 export default CustomPassword;

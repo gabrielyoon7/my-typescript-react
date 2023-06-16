@@ -5,10 +5,10 @@ function SuspenseRoot() {
     <>
       <h1>Suspense 예제</h1>
       <div>
-        <Search/>
+        <Search />
       </div>
     </>
-  )
+  );
 }
 
 export default SuspenseRoot;

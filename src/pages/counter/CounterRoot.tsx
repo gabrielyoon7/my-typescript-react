@@ -1,7 +1,6 @@
-import Counter1 from "./Counter1"
-import Counter2 from "./Counter2"
+import Counter1 from "./Counter1";
+import Counter2 from "./Counter2";
 
-/* eslint-disable import/no-anonymous-default-export */
 export default () => {
   return (
     <>
@@ -10,5 +9,5 @@ export default () => {
       <Counter2 />
       <hr />
     </>
-  )
-}
+  );
+};

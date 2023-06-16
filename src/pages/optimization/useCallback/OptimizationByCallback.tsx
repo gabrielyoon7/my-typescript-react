@@ -5,7 +5,7 @@ function Box({ params, onClick }: {
   params: { color: string };
   onClick: () => void;
 }) {
-  console.log(`Box 렌더링 됨 : ${params.color}`)
+  console.log(`Box 렌더링 됨 : ${params.color}`);
   return (
     <div
       style={{
@@ -16,7 +16,7 @@ function Box({ params, onClick }: {
       }}
       onClick={onClick}
     />
-  )
+  );
 }
 
 const MemoedBox = memo(Box);
@@ -44,7 +44,7 @@ function OptimizationByCallback() {
         색상 바꾸기
       </button>
     </>
-  )
+  );
 }
 
 export default OptimizationByCallback;

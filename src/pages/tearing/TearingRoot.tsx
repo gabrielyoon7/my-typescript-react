@@ -11,6 +11,6 @@ function TearingRoot() {
       <div><h2>티어링이 발생하는 컴포넌트</h2></div>
       <Tearing />
     </>
-  )
+  );
 }
 export default TearingRoot;

@@ -17,7 +17,7 @@ function TransitionRoot() {
       <h2>트랜지션이 발생하는 컴포넌트</h2>
       <StartTransitionPickColor />
     </>
-  )
+  );
 }
 
 export default TransitionRoot;

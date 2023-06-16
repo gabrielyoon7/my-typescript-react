@@ -8,6 +8,6 @@ function Wrapper({ children }: WrapperProps) {
     <div style={{ padding: '10px', backgroundColor: "yellow" }}>
       {children}
     </div>
-  )
+  );
 }
 export default Wrapper;

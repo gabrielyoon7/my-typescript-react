@@ -17,18 +17,18 @@ const reducer = (state: State, action: Action) => {
     default:
       return state;
   }
-}
+};
 
 function Counter() {
   const [state, dispatch] = useReducer(reducer, { count: 0 });
 
   const increment = () => {
     dispatch({ type: 'INCREMENT' });
-  }
+  };
 
   const decrement = () => {
     dispatch({ type: 'DECREMENT' });
-  }
+  };
 
   return (
     <div>

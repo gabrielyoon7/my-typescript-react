@@ -6,7 +6,7 @@ function UseFetchRoot() {
       <div>UseFetchRoot</div>
       <UseFetch />
     </>
-  )
+  );
 }
 
 export default UseFetchRoot;

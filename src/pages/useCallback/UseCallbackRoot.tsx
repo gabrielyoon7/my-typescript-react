@@ -1,7 +1,6 @@
-import Counter from "./Counter"
-import MemoizedCounter from "./MemoizedCounter"
+import Counter from "./Counter";
+import MemoizedCounter from "./MemoizedCounter";
 
-/* eslint-disable import/no-anonymous-default-export */
 export default () => {
   return (
     <>
@@ -10,5 +9,5 @@ export default () => {
       <MemoizedCounter />
       <hr />
     </>
-  )
-}
+  );
+};

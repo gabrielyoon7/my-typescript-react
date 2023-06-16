@@ -1,3 +1,4 @@
+/* eslint-disable no-empty */
 import { startTransition, useEffect, useRef, useState } from "react";
 
 const useMouseX = () => {
@@ -29,7 +30,7 @@ const Tearing = () => {
   const inc = () => {
     startTransition(() => {
       setCount((c: any) => c + 1);
-    })
+    });
   };
   return (
     <div>
@@ -47,5 +48,5 @@ const Tearing = () => {
       </div>
     </div>
   );
-}
+};
 export default Tearing;

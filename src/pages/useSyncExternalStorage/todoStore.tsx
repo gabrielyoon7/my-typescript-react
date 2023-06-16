@@ -10,7 +10,7 @@ let listeners: Array<() => void> = [];
 
 export const todosStore = {
   addTodo() {
-    todos = [...todos, { id: nextId++, text: 'Todo #' + nextId }]
+    todos = [...todos, { id: nextId++, text: 'Todo #' + nextId }];
     emitChange();
   },
   subscribe(listener: () => void) {
@@ -25,7 +25,7 @@ export const todosStore = {
 };
 
 function emitChange() {
-  for (let listener of listeners) {
+  for (const listener of listeners) {
     listener();
   }
 }

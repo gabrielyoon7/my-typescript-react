@@ -1,6 +1,5 @@
-/* eslint-disable import/no-anonymous-default-export */
-import ItemArray from "./ItemArray"
-import ItemObjectArray from "./ItemObjectArray"
+import ItemArray from "./ItemArray";
+import ItemObjectArray from "./ItemObjectArray";
 
 export default () => {
   return (
@@ -10,5 +9,5 @@ export default () => {
       <ItemObjectArray />
       <hr />
     </>
-  )
-}
+  );
+};

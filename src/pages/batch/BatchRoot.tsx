@@ -1,4 +1,4 @@
-import {useState, useLayoutEffect} from "react";
+import { useState, useLayoutEffect } from "react";
 
 /**
  * @DOCS: https://github.com/reactwg/react-18/discussions/21
@@ -26,8 +26,8 @@ function BatchRoot() {
   return (
     <div>
       <button onClick={handleClick}>Next</button>
-      <h1 style={{color: flag ? "blue" : "black"}}>{count}</h1>
-      <LogEvents/>
+      <h1 style={{ color: flag ? "blue" : "black" }}>{count}</h1>
+      <LogEvents />
     </div>
   );
 }

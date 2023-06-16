@@ -1,3 +1,4 @@
+/* eslint-disable no-empty */
 import { useState, startTransition } from "react";
 
 const StartTransition = () => {

@@ -1,3 +1,4 @@
+/* eslint-disable no-empty */
 import { useEffect, useRef, useState } from "react";
 
 const useMouseX = () => {
@@ -45,5 +46,5 @@ const NotTearing = () => {
       </div>
     </div>
   );
-}
+};
 export default NotTearing;

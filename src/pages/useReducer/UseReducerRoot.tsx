@@ -1,5 +1,5 @@
-import Counter from "./Counter"
-import ItemsList from "./ItemsList"
+import Counter from "./Counter";
+import ItemsList from "./ItemsList";
 
 /* eslint-disable import/no-anonymous-default-export */
 export default () => {
@@ -10,5 +10,5 @@ export default () => {
       <ItemsList />
       <hr />
     </>
-  )
-}
+  );
+};

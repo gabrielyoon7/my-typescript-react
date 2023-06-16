@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 
 interface FetchData<T> {
   data: T | null;
@@ -31,7 +31,7 @@ const useFetch = <T>(url: string): FetchData<T> => {
     fetchData();
   }, [url]);
 
-  return {data, isLoading, error};
+  return { data, isLoading, error };
 };
 
 export default useFetch;

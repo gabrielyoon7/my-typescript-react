@@ -1,5 +1,5 @@
 // @/src/hooks/useTable.js
-import {useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 
 const calculateRange = (data: Record<string, unknown>[], rowsPerPage: number) => {
   const range = [];
@@ -26,7 +26,7 @@ const useTable = (data: Record<string, unknown>[], page: number, rowsPerPage: nu
     setSlice([...slice]);
   }, [data, setTableRange, page, setSlice]);
 
-  return {slice, range: tableRange};
+  return { slice, range: tableRange };
 };
 
 export default useTable;

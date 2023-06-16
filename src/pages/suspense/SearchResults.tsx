@@ -1,8 +1,8 @@
-import {Photo} from "../../types/common.ts";
+import { Photo } from "../../types/common.ts";
 import useFetch from "./hooks/useFetch.ts";
 
-export default function SearchResults({query}: { query: string }) {
-  const {data: photos, isLoading, error} = useFetch<Photo[]>(`/photos?query=${query}`);
+export default function SearchResults({ query }: { query: string }) {
+  const { data: photos, isLoading, error } = useFetch<Photo[]>(`/photos?query=${query}`);
 
   if (photos === null || error !== null) {
     return null;

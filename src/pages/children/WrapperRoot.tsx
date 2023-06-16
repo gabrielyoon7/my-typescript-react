@@ -1,5 +1,5 @@
-import Child from "./Child"
-import Wrapper from "./Wrapper"
+import Child from "./Child";
+import Wrapper from "./Wrapper";
 
 const WrapperRoot = () => {
   return (
@@ -17,7 +17,7 @@ const WrapperRoot = () => {
       <Wrapper><Child /></Wrapper>
       <hr />
     </>
-  )
-}
+  );
+};
 
-export default WrapperRoot
+export default WrapperRoot;

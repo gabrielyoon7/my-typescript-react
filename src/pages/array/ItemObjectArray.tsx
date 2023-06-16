@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState } from "react";
 
 interface Item {
   id: number;
@@ -14,10 +14,10 @@ function ItemObjectArray() {
       id: list.length,
       text: `Item ${list.length}`
     }));
-  }
+  };
   const removeItem = () => {
     setList(list.filter((el) => el !== list[list.length - 1]));
-  }
+  };
 
   return (
     <>
@@ -27,6 +27,6 @@ function ItemObjectArray() {
       <button onClick={() => addItem()}>추가</button>
       <button onClick={() => removeItem()}>삭제</button>
     </>
-  )
+  );
 }
 export default ItemObjectArray;

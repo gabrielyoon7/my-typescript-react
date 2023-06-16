@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import React, { useState } from "react";
 
 export interface GlobalState {

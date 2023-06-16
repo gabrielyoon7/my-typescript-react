@@ -1,10 +1,11 @@
+/* eslint-disable no-empty */
 import { ChangeEvent, startTransition, useState } from "react";
 
 function Box({ color }: { color: string }) {
-  console.log(`rendered: ${color}`)
+  console.log(`rendered: ${color}`);
   return (
     <div style={{ height: '100px', width: '100px', margin: '5px', backgroundColor: color }}></div>
-  )
+  );
 }
 
 function StartTransitionPickColor() {
@@ -18,7 +19,7 @@ function StartTransitionPickColor() {
     });
     // 딜레이 유발
     for (let i = 0; i < 1000000000; i++) { }
-  }
+  };
 
   console.log(count);
 
@@ -33,7 +34,7 @@ function StartTransitionPickColor() {
         <Box color={value} />
       </div>
     </div>
-  )
+  );
 }
 
 export default StartTransitionPickColor;

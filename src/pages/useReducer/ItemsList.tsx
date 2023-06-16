@@ -25,7 +25,7 @@ const reducer = (state: State, action: Action): State => {
     default:
       return state;
   }
-}
+};
 
 function ItemsList() {
   const [state, dispatch] = useReducer(reducer, { items: [] });
@@ -36,11 +36,11 @@ function ItemsList() {
       text: `Item ${state.items.length + 1}`,
     };
     dispatch({ type: 'ADD_ITEM', payload: newItem });
-  }
+  };
 
   const deleteItem = (item: Item) => {
     dispatch({ type: 'DELETE_ITEM', payload: item });
-  }
+  };
 
   return (
     <div>

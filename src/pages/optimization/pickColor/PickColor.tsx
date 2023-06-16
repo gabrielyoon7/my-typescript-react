@@ -1,10 +1,10 @@
 import { ChangeEvent, memo, useState } from "react";
 
 function Box({ color }: { color: string }) {
-  console.log(`rendered: ${color}`)
+  console.log(`rendered: ${color}`);
   return (
     <div style={{ height: '100px', width: '100px', margin: '5px', backgroundColor: color }}></div>
-  )
+  );
 }
 
 const MemoedBox = memo(Box);
@@ -16,7 +16,7 @@ function PickColor() {
   const changeColor = (e: ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
     setCount(prevCount => prevCount + 1); // use functional update
-  }
+  };
 
   console.log(count);
 
@@ -32,7 +32,7 @@ function PickColor() {
         <MemoedBox color="red" />
       </div>
     </div>
-  )
+  );
 }
 
 export default PickColor;

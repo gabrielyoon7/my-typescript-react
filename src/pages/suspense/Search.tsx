@@ -1,4 +1,4 @@
-import {Suspense, useState} from 'react';
+import { Suspense, useState } from 'react';
 import SearchResults from "./SearchResults.tsx";
 
 export default function Search() {
@@ -7,10 +7,10 @@ export default function Search() {
     <>
       <label>
         Search photos:
-        <input value={query} onChange={e => setQuery(e.target.value)}/>
+        <input value={query} onChange={e => setQuery(e.target.value)} />
       </label>
       <Suspense fallback={<h1>Loading by Suspense...</h1>}>
-        <SearchResults query={query}/>
+        <SearchResults query={query} />
       </Suspense>
     </>
   );

@@ -1,8 +1,6 @@
-import { useSyncExternalStore } from "react"
-import AnotherApp from "./AnotherApp"
-import TodosApp from "./TodoApp"
+import AnotherApp from "./AnotherApp";
+import TodosApp from "./TodoApp";
 
-/* eslint-disable import/no-anonymous-default-export */
 export default () => {
   return (
     <>
@@ -13,5 +11,5 @@ export default () => {
       <TodosApp />
       <AnotherApp />
     </>
-  )
-}
+  );
+};

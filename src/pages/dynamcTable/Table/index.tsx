@@ -1,5 +1,5 @@
 // @/src/components/Table/index.tsx
-import React, {ReactNode, useState} from "react";
+import React, { ReactNode, useState } from "react";
 import useTable from "./hooks/useTable";
 import styles from "./Table.module.css";
 import TableFooter from "./TableFooter";
@@ -9,9 +9,9 @@ interface TableProps {
   rowsPerPage: number;
 }
 
-function Table({data, rowsPerPage}: TableProps) {
+function Table({ data, rowsPerPage }: TableProps) {
   const [page, setPage] = useState<number>(1);
-  const {slice, range} = useTable(data, page, rowsPerPage);
+  const { slice, range } = useTable(data, page, rowsPerPage);
 
   return (
     <>
@@ -21,23 +21,23 @@ function Table({data, rowsPerPage}: TableProps) {
             <>
               <table className={styles.table}>
                 <thead className={styles.tableRowHeader}>
-                <tr>
-                  {Object.keys(data[0]).map((el) => (<th key={Math.random()} className={styles.tableHeader}>{el}</th>))}
-                </tr>
+                  <tr>
+                    {Object.keys(data[0]).map((el) => (<th key={Math.random()} className={styles.tableHeader}>{el}</th>))}
+                  </tr>
                 </thead>
                 <tbody>
-                {slice.map((el) => (
-                  <tr className={styles.tableRowItems} key={Math.random()}>
-                    {Object.keys(el).map((col) => (
-                      <td
-                        key={Math.random()}
-                        className={styles.tableCell}
-                      >
-                        {el[col] as ReactNode}
-                      </td>
-                    ))}
-                  </tr>
-                ))}
+                  {slice.map((el) => (
+                    <tr className={styles.tableRowItems} key={Math.random()}>
+                      {Object.keys(el).map((col) => (
+                        <td
+                          key={Math.random()}
+                          className={styles.tableCell}
+                        >
+                          {el[col] as ReactNode}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
                 </tbody>
               </table>
               <TableFooter
