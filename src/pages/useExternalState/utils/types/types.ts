@@ -4,3 +4,13 @@ export interface DataObserver<T> {
   setState: (newState: T) => void;
   getSnapshot: () => T;
 }
+
+export interface Config<T> {
+  default: T;
+}
+
+
+export interface Action {
+  [key: string]: ({get, set}: { get: any, set: any }) => void;
+}
+

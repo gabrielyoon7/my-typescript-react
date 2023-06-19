@@ -1,19 +1,19 @@
 import {Todo} from "../types/types.ts";
+import useExternalState from "../utils/hooks/useExternalStore.ts";
+import {todoStore} from "../stores/todoStore.ts";
 
 function TodoList() {
-  const todoList: Todo[] = [
-    {id: 0, content: 'hi-0'},
-    {id: 1, content: 'hi-1'},
-  ]; // 이전 예정
-  
+  const [todoList, setTodoList] = useExternalState(todoStore);
+
   return (
-    <>
+    <div>
+      <button onClick={() => setTodoList([])}>모두 삭제</button>
       {todoList.map(todo => (
         <div key={todo.id}>
           {todo.content}
         </div>
       ))}
-    </>
+    </div>
   );
 }
 

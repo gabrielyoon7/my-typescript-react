@@ -1,6 +1,6 @@
 import {DataObserver} from "./types/types.ts";
 
-class Store<T> implements DataObserver<T> {
+class StateManager<T> implements DataObserver<T> {
   public state: T;
   private listeners: Array<() => void> = [];
 
@@ -31,4 +31,4 @@ class Store<T> implements DataObserver<T> {
   };
 }
 
-export default Store;
+export default StateManager;
