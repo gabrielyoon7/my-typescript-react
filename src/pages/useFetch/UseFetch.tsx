@@ -5,8 +5,7 @@ function UseFetch() {
 
   if (isLoading) {
     // eslint-disable-next-line @typescript-eslint/no-empty-function
-    return new Promise((resolve, reject) => {
-    });
+    return <div>Loading...</div>;
   }
 
   if (error) {
