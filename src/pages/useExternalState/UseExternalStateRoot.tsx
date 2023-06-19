@@ -1,4 +1,3 @@
-import TodoList from "./components/TodoList.tsx";
 import TodoContainer from "./components/TodoContainer.tsx";
 
 function UseExternalStateRoot() {
