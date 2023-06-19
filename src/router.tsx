@@ -19,6 +19,7 @@ import UseDeferredValueRoot from './pages/useDeferredValue/UseDeferredValueRoot.
 import DynamicTableRoot from './pages/dynamcTable/DynamicTableRoot.tsx';
 import BatchRoot from "./pages/batch/BatchRoot.tsx";
 import SuspenseRoot from "./pages/suspense/SuspenseRoot.tsx";
+import UseExternalStateRoot from "./pages/useExternalState/UseExternalStateRoot.tsx";
 
 export const homeChildren = [
   {
@@ -72,6 +73,11 @@ export const homeChildren = [
     title: 'useSyncExternalStorage 예제'
   },
   {
+    path: '/use-external-store',
+    element: <UseExternalStateRoot/>,
+    title: 'useSyncExternalStorage 훅으로 만들어 본 useExternalState (전역상태관리훅)'
+  },
+  {
     path: '/use-id',
     element: <UserIdRoot/>,
     title: 'userId 예제'
@@ -121,7 +127,7 @@ export const homeChildren = [
     element: <Temp/>,
     title: '임시 페이지'
   },
-]
+];
 
 const router = createBrowserRouter([
   {
