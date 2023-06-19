@@ -5,12 +5,13 @@ export interface DataObserver<T> {
   getSnapshot: () => T;
 }
 
-export interface Config<T> {
+export interface StoreConfig<T> {
   default: T;
 }
 
-
-export interface Action {
-  [key: string]: ({get, set}: { get: any, set: any }) => void;
+export interface ActionConfig<T> {
+  store: any,
+  actions: {
+    [key: string]: ({get, set}: { get?: any, set?: any }) => (...params: unknown[]) => void;
+  }
 }
-

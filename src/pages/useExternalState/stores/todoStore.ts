@@ -1,5 +1,6 @@
 import {store} from "../utils/config/store.ts";
 import {Todo} from "../types/types.ts";
+import {action} from "../utils/config/action.ts";
 // import {Action} from "../utils/types/types.ts";
 
 export const todoStore = store<Todo[]>({
@@ -9,9 +10,8 @@ export const todoStore = store<Todo[]>({
     {id: 2, content: 'hi-2'},
   ],
 });
-//
-// export const todoAction = action{
-//   addTodo: (todo: Todo) => {
-//
-//   }
-// };
+
+
+/**
+ * TODO: 비즈니스로직 관리 기능(actions) 구현 필요
+ */
