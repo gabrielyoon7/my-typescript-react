@@ -1,7 +1,6 @@
-import { styled, useTheme } from '@mui/material/styles';
+import {useTheme} from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
-import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
@@ -15,61 +14,17 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import PlayCircleFilledWhiteIcon from '@mui/icons-material/PlayCircleFilledWhite';
-import { homeChildren } from '../router';
-import { Outlet, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import {homeChildren} from '../../router.tsx';
+import {Outlet, useLocation, useNavigate} from 'react-router-dom';
+import {useState} from 'react';
+import {AppBar, DrawerHeader, Main} from "./HomeLayout.style.tsx";
+import {drawerWidth} from "./drawerWidth.ts";
 
-const drawerWidth = 240;
-
-const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })<{
-  open?: boolean;
-}>(({ theme, open }) => ({
-  flexGrow: 1,
-  transition: theme.transitions.create('margin', {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-  marginLeft: `-${drawerWidth}px`,
-  ...(open && {
-    transition: theme.transitions.create('margin', {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-    marginLeft: 0,
-  }),
-}));
-
-interface AppBarProps extends MuiAppBarProps {
-  open?: boolean;
-}
-
-const AppBar = styled(MuiAppBar, {
-  shouldForwardProp: (prop) => prop !== 'open',
-})<AppBarProps>(({ theme, open }) => ({
-  transition: theme.transitions.create(['margin', 'width'], {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-  ...(open && {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: `${drawerWidth}px`,
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  }),
-}));
-
-const DrawerHeader = styled('div')(({ theme }) => ({
-  display: 'flex',
-  alignItems: 'center',
-  padding: theme.spacing(0, 1),
-  ...theme.mixins.toolbar,
-  justifyContent: 'flex-end',
-}));
+const findTitleByPath = (path: string) => homeChildren.find((child) => child.path === path)?.title;
 
 export default function HomeLayout() {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const theme = useTheme();
   const [open, setOpen] = useState(true);
@@ -83,7 +38,7 @@ export default function HomeLayout() {
   };
 
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{display: 'flex'}}>
       <AppBar position="fixed" open={open}>
         <Toolbar>
           <IconButton
@@ -91,12 +46,12 @@ export default function HomeLayout() {
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
-            sx={{ mr: 2, ...(open && { display: 'none' }) }}
+            sx={{mr: 2, ...(open && {display: 'none'})}}
           >
-            <MenuIcon />
+            <MenuIcon/>
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            React with TS playground
+            React with TS playground : {findTitleByPath(location.pathname)}
           </Typography>
         </Toolbar>
       </AppBar>
@@ -115,10 +70,10 @@ export default function HomeLayout() {
       >
         <DrawerHeader>
           <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+            {theme.direction === 'ltr' ? <ChevronLeftIcon/> : <ChevronRightIcon/>}
           </IconButton>
         </DrawerHeader>
-        <Divider />
+        <Divider/>
         <List>
           {homeChildren.map((child, i) => (
 
@@ -129,19 +84,19 @@ export default function HomeLayout() {
             >
               <ListItemButton>
                 <ListItemIcon>
-                  <PlayCircleFilledWhiteIcon />
+                  <PlayCircleFilledWhiteIcon/>
                 </ListItemIcon>
-                <ListItemText primary={child.title} />
+                <ListItemText primary={child.title}/>
               </ListItemButton>
             </ListItem>
           ))}
         </List>
-        <Divider />
+        <Divider/>
       </Drawer>
       <Main open={open}>
-        <DrawerHeader />
+        <DrawerHeader/>
         <Box>
-          <Outlet />
+          <Outlet/>
         </Box>
       </Main>
     </Box>
