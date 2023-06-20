@@ -10,7 +10,7 @@ export interface StoreConfig<T> {
 }
 
 export interface ActionConfig<T> {
-  store: any,
+  store: DataObserver<T>,
   actions: {
     [key: string]: ({get, set}: { get?: any, set?: any }) => (...params: unknown[]) => void;
   }

@@ -4,8 +4,8 @@ class StateManager<T> implements DataObserver<T> {
   public state: T;
   private listeners: Array<() => void> = [];
 
-  constructor(initValue: T) {
-    this.state = initValue;
+  constructor(initialState: T) {
+    this.state = initialState;
   }
 
   subscribe = (listener: () => void) => {
@@ -22,7 +22,7 @@ class StateManager<T> implements DataObserver<T> {
   };
 
   setState = (newState: T) => {
-    this.state = newState;
+    this.state = newState; // 실험결과 반드시 재할당 해야 리액트에서 변화를 감지함 ==> Object.is() 연산 동작
     this.emitChange();
   };
 
