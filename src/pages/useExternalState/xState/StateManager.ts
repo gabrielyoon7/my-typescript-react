@@ -16,7 +16,7 @@ class StateManager<T> implements DataObserver<T> {
   get = () => {
     return this.state;
   };
-  
+
   subscribe = (listener: () => void) => {
     this.listeners = [...this.listeners, listener];
     return () => {
@@ -30,7 +30,7 @@ class StateManager<T> implements DataObserver<T> {
     }
   };
 
-  getSnapshot = () => {
+  getSnapshot = () => { // 값 형태를 반드시 유지해야 오류가 없음
     return this.state;
   };
 }

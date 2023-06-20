@@ -5,10 +5,9 @@ export interface DataObserver<T> {
   getSnapshot: () => T;
 }
 
-export interface StoreConfig<T> {
-  default: T;
-}
-
+// export interface StoreConfig<T> {
+//   default: T;
+// }
 //
 // export interface ActionConfig<T> {
 //   store: DataObserver<T>,
