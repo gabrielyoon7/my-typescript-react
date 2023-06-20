@@ -1,4 +1,4 @@
-import {actions, store} from "../xState/config/xState.ts";
+import {store} from "../xState/config/xState.ts";
 import {Todo} from "../types/types.ts";
 
 export const todoStore = store<Todo[]>({
@@ -9,11 +9,13 @@ export const todoStore = store<Todo[]>({
   ],
 });
 
-export const todoActions = actions<Todo[]>({
-  store: todoStore,
-  actions: {
-    /**
-     * TODO: 비즈니스로직 관리 기능(actions) 구현 필요
-     */
-  }
-});
+export const todoActions = {
+  addTodo: (value: string) => {
+    const prevTodo = todoStore.get();
+    const newTodo: Todo = {
+      id: prevTodo.length,
+      content: value
+    };
+    todoStore.set([...prevTodo, newTodo]);
+  },
+};
