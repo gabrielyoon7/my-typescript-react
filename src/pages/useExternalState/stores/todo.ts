@@ -1,4 +1,4 @@
-import {store} from "../xState/config/xState.ts";
+import {store} from "../xState/config/configs.ts";
 import {Todo} from "../types/types.ts";
 
 export const todoStore = store<Todo[]>([
@@ -16,4 +16,9 @@ export const todoActions = {
     };
     todoStore.set([...prevTodo, newTodo]);
   },
+  deleteTodo: (id: number) => {
+    const prevTodo = todoStore.get();
+    const nextTodo = prevTodo.filter(todo => todo.id !== id);
+    todoStore.set(nextTodo);
+  }
 };

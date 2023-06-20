@@ -9,7 +9,6 @@ function TodoInput() {
       <input value={value} onChange={(e) => setValue(e.target.value)}/>
       <button
         onClick={() => {
-          console.log(`repository.addTodo(value)를 해줄 위치: ${value}`);
           todoActions.addTodo(value);
           setValue("");
         }}

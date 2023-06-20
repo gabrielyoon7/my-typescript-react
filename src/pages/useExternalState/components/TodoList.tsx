@@ -1,5 +1,5 @@
-import useExternalState from "../xState/hooks/useExternalState.ts";
-import {todoStore} from "../stores/todo.ts";
+import {useExternalState} from "../xState/hooks/hooks.ts";
+import {todoActions, todoStore} from "../stores/todo.ts";
 
 function TodoList() {
   const [todoList, setTodoList] = useExternalState(todoStore);
@@ -10,6 +10,11 @@ function TodoList() {
       {todoList.map(todo => (
         <div key={todo.id}>
           {todo.content}
+          <button
+            onClick={() => todoActions.deleteTodo(todo.id)}
+          >
+            삭제
+          </button>
         </div>
       ))}
     </div>
