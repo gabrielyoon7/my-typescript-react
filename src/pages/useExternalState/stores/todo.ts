@@ -1,4 +1,4 @@
-import {actions, store} from "../utils/config/xState.ts";
+import {actions, store} from "../xState/config/xState.ts";
 import {Todo} from "../types/types.ts";
 
 export const todoStore = store<Todo[]>({

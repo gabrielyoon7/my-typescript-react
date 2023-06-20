@@ -1,4 +1,4 @@
-import useExternalState from "../utils/hooks/useExternalState.ts";
+import useExternalState from "../xState/hooks/useExternalState.ts";
 import {todoStore} from "../stores/todo.ts";
 
 function TodoList() {
