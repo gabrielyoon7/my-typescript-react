@@ -6,7 +6,7 @@ type ReturnTypeUseExternalState<T> = [T, (newState: T) => void];
 const useExternalState = <T>(store: DataObserver<T>): ReturnTypeUseExternalState<T> => {
   const state = useSyncExternalStore(store.subscribe, store.getSnapshot);
 
-  return [state, store.setState];
+  return [state, store.set];
 };
 
 export default useExternalState;
