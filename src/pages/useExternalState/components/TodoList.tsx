@@ -1,4 +1,3 @@
-import {Todo} from "../types/types.ts";
 import useExternalState from "../utils/hooks/useExternalStore.ts";
 import {todoStore} from "../stores/todoStore.ts";
 

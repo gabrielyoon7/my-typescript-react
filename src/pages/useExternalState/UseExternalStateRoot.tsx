@@ -5,7 +5,9 @@ function UseExternalStateRoot() {
     <>
       <h1>미완성</h1>
       <TodoContainer/>
+      <hr/>
       <TodoContainer/>
+      <hr/>
     </>
   );
 }

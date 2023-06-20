@@ -1,7 +1,5 @@
 import {store} from "../utils/config/store.ts";
 import {Todo} from "../types/types.ts";
-import {action} from "../utils/config/action.ts";
-// import {Action} from "../utils/types/types.ts";
 
 export const todoStore = store<Todo[]>({
   default: [
