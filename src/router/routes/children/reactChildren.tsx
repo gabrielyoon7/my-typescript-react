@@ -24,7 +24,7 @@ export const reactChildren: Route[] = [
   {
     path: '',
     element: <>리액트를 테스트하는 페이지입니다.</>,
-    title: 'Home'
+    title: 'README'
   },
   {
     path: 'counter',
