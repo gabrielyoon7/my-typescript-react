@@ -1,4 +1,4 @@
-// @/src/components/Table/index.tsx
+// @/src/styles/Table/index.tsx
 import React, {ReactNode, useState} from "react";
 import useTable from "./hooks/useTable.ts";
 import styles from "./Table.module.css";

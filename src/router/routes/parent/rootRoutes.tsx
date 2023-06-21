@@ -1,8 +1,9 @@
-import Home from "../../../components/Home";
-import ReactLayout from "../../../components/ReactLayout";
+import Home from "../../../components/layout/Home";
+import ReactLayout from "../../../components/layout/ReactLayout";
 import {reactChildren} from "../children/reactChildren.tsx";
+import {Route} from "../../../types/common.ts";
 
-export const rootRoutes = [
+export const rootRoutes: Route[] = [
   {
     path: '/',
     element: <Home/>,

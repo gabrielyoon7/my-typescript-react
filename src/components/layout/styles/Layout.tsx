@@ -15,17 +15,23 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import PlayCircleFilledWhiteIcon from '@mui/icons-material/PlayCircleFilledWhite';
-import {Outlet, useLocation, useNavigate} from 'react-router-dom';
-import {useState} from 'react';
-import {AppBar, DrawerHeader, Main} from "./ReactLayout.style.tsx";
-import {drawerWidth} from "./drawerWidth.ts";
-import {reactChildren} from "../../router/routes/children/reactChildren.tsx";
+import {useNavigate} from 'react-router-dom';
+import {ReactNode, useState} from 'react';
+import {AppBar, DrawerHeader, Main} from "../styles/styles.ts";
+import {drawerWidth} from "../styles/styles.ts";
+import {Route} from "../../../types/common.ts";
+import {reactChildren} from "../../../router/routes/children/reactChildren.tsx";
+
+interface LayoutProps {
+  title: string;
+  routes: Route[],
+  render: ReactNode
+}
 
 const findTitleByPath = (path: string) => reactChildren.find((child) => child.path === path)?.title;
 
-export default function ReactLayout() {
+export default function Layout({title, routes, render}: LayoutProps) {
   const navigate = useNavigate();
-  const location = useLocation();
 
   const theme = useTheme();
   const [open, setOpen] = useState(true);
@@ -52,7 +58,7 @@ export default function ReactLayout() {
             <MenuIcon/>
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            React with TS playground : {findTitleByPath(location.pathname)}
+            {title} : {findTitleByPath(location.pathname)}
           </Typography>
         </Toolbar>
       </AppBar>
@@ -73,14 +79,13 @@ export default function ReactLayout() {
           <IconButton onClick={() => navigate('/')}>
             <HomeIcon/>
           </IconButton>
-
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'ltr' ? <ChevronLeftIcon/> : <ChevronRightIcon/>}
           </IconButton>
         </DrawerHeader>
         <Divider/>
         <List>
-          {reactChildren.map((child, i) => (
+          {routes.map((child, i) => (
 
             <ListItem
               key={`home-route-${i}`}
@@ -101,7 +106,7 @@ export default function ReactLayout() {
       <Main open={open}>
         <DrawerHeader/>
         <Box>
-          <Outlet/>
+          {render}
         </Box>
       </Main>
     </Box>

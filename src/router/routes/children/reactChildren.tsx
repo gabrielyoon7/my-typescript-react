@@ -18,8 +18,9 @@ import UseFetchRoot from "../../../pages/react/useFetch/UseFetchRoot.tsx";
 import BatchRoot from "../../../pages/react/batch/BatchRoot.tsx";
 import SuspenseRoot from "../../../pages/react/suspense/SuspenseRoot.tsx";
 import Temp from "../../../pages/react/Temp.tsx";
+import {Route} from "../../../types/common.ts";
 
-export const reactChildren = [
+export const reactChildren: Route[] = [
   {
     path: '',
     element: <>리액트를 테스트하는 페이지입니다.</>,
