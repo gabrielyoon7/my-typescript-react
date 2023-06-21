@@ -9,23 +9,19 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import HomeIcon from '@mui/icons-material/Home';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import PlayCircleFilledWhiteIcon from '@mui/icons-material/PlayCircleFilledWhite';
-import {Outlet, useLocation, useNavigate} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import {useState} from 'react';
-import {AppBar, DrawerHeader, Main} from "./ReactLayout.style.tsx";
+import {AppBar, DrawerHeader, Main} from "./Home.style.tsx";
 import {drawerWidth} from "./drawerWidth.ts";
-import {reactChildren} from "../../router/routes/children/reactChildren.tsx";
+import {rootRoutes} from "../../router/routes/parent/rootRoutes.tsx";
 
-const findTitleByPath = (path: string) => reactChildren.find((child) => child.path === path)?.title;
-
-export default function ReactLayout() {
+export default function Home() {
   const navigate = useNavigate();
-  const location = useLocation();
 
   const theme = useTheme();
   const [open, setOpen] = useState(true);
@@ -52,7 +48,7 @@ export default function ReactLayout() {
             <MenuIcon/>
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            React with TS playground : {findTitleByPath(location.pathname)}
+            React with TS playground : 메뉴를 선택하세요
           </Typography>
         </Toolbar>
       </AppBar>
@@ -70,17 +66,13 @@ export default function ReactLayout() {
         open={open}
       >
         <DrawerHeader>
-          <IconButton onClick={() => navigate('/')}>
-            <HomeIcon/>
-          </IconButton>
-
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'ltr' ? <ChevronLeftIcon/> : <ChevronRightIcon/>}
           </IconButton>
         </DrawerHeader>
         <Divider/>
         <List>
-          {reactChildren.map((child, i) => (
+          {rootRoutes.map((child, i) => (
 
             <ListItem
               key={`home-route-${i}`}
@@ -101,7 +93,7 @@ export default function ReactLayout() {
       <Main open={open}>
         <DrawerHeader/>
         <Box>
-          <Outlet/>
+          좌측에서 메뉴를 선택하세요
         </Box>
       </Main>
     </Box>

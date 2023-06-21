@@ -1,30 +1,28 @@
-import {createBrowserRouter} from 'react-router-dom';
-import ArrayRoot from './pages/react/array/ArrayRoot';
-import WrapperRoot from './pages/react/children/WrapperRoot';
-import CounterRoot from './pages/react/counter/CounterRoot';
-import CustomPasswordRoot from './pages/react/customPassword/CustomPasswordRoot';
-import UseCallbackRoot from './pages/react/useCallback/UseCallbackRoot';
-import UseReducerRoot from './pages/react/useReducer/UseReducerRoot';
-import ReactLayout from './components/ReactLayout';
-import UseSyncExternalStorageRoot from './pages/react/useSyncExternalStorage/UseSyncExternalStorageRoot';
-import FunctionContextAPIRoot from './pages/react/functionalContextAPI/FunctionContextAPIRoot';
-import UserIdRoot from './pages/react/useId/UserIdRoot';
-import TearingRoot from './pages/react/tearing/TearingRoot';
-import TransitionRoot from './pages/react/startTransition/TransitionRoot';
-import OptimizationRoot from './pages/react/optimization/OptimizationRoot';
-import Temp from './pages/react/Temp.tsx';
-import UseTransitionRoot from "./pages/react/useTransition/UseTransitionRoot.tsx";
-import UseFetchRoot from './pages/react/useFetch/UseFetchRoot.tsx';
-import UseDeferredValueRoot from './pages/react/useDeferredValue/UseDeferredValueRoot.tsx';
-import DynamicTableRoot from './pages/react/dynamcTable/DynamicTableRoot.tsx';
-import BatchRoot from "./pages/react/batch/BatchRoot.tsx";
-import SuspenseRoot from "./pages/react/suspense/SuspenseRoot.tsx";
-import UseExternalStateRoot from "./pages/react/useExternalState/UseExternalStateRoot.tsx";
+import CounterRoot from "../../../pages/react/counter/CounterRoot.tsx";
+import ArrayRoot from "../../../pages/react/array/ArrayRoot.tsx";
+import WrapperRoot from "../../../pages/react/children/WrapperRoot.tsx";
+import CustomPasswordRoot from "../../../pages/react/customPassword/CustomPasswordRoot.tsx";
+import DynamicTableRoot from "../../../pages/react/dynamcTable/DynamicTableRoot.tsx";
+import UseCallbackRoot from "../../../pages/react/useCallback/UseCallbackRoot.tsx";
+import UseReducerRoot from "../../../pages/react/useReducer/UseReducerRoot.tsx";
+import FunctionContextAPIRoot from "../../../pages/react/functionalContextAPI/FunctionContextAPIRoot.tsx";
+import UseSyncExternalStorageRoot from "../../../pages/react/useSyncExternalStorage/UseSyncExternalStorageRoot.tsx";
+import UseExternalStateRoot from "../../../pages/react/useExternalState/UseExternalStateRoot.tsx";
+import UserIdRoot from "../../../pages/react/useId/UserIdRoot.tsx";
+import TearingRoot from "../../../pages/react/tearing/TearingRoot.tsx";
+import TransitionRoot from "../../../pages/react/startTransition/TransitionRoot.tsx";
+import OptimizationRoot from "../../../pages/react/optimization/OptimizationRoot.tsx";
+import UseTransitionRoot from "../../../pages/react/useTransition/UseTransitionRoot.tsx";
+import UseDeferredValueRoot from "../../../pages/react/useDeferredValue/UseDeferredValueRoot.tsx";
+import UseFetchRoot from "../../../pages/react/useFetch/UseFetchRoot.tsx";
+import BatchRoot from "../../../pages/react/batch/BatchRoot.tsx";
+import SuspenseRoot from "../../../pages/react/suspense/SuspenseRoot.tsx";
+import Temp from "../../../pages/react/Temp.tsx";
 
 export const reactChildren = [
   {
     path: '',
-    element: <></>,
+    element: <>리액트를 테스트하는 페이지입니다.</>,
     title: 'Home'
   },
   {
@@ -128,19 +126,3 @@ export const reactChildren = [
     title: '임시 페이지'
   },
 ];
-
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <>home</>,
-  },
-  {
-    path: '/react',
-    element: <ReactLayout/>,
-    children: reactChildren,
-  },
-], {
-  basename: '/my-typescript-react/'
-});
-
-export default router;
