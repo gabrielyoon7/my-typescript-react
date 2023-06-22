@@ -6,6 +6,8 @@ import {recoilChildren} from "../children/recoilChildren.tsx";
 import RecoilLayout from "../../../components/layout/RecoilLayout.tsx";
 import {mswChildren} from "../children/mswChildren.tsx";
 import MswLayout from "../../../components/layout/MswLayout.tsx";
+import TanstackQueryLayout from "../../../components/layout/TanstackQueryLayout.tsx";
+import {tanstackQueryChildren} from "../children/tanstackQueryChildren.tsx";
 
 export const rootRoutes: Route[] = [
   {
@@ -30,5 +32,11 @@ export const rootRoutes: Route[] = [
     element: <MswLayout/>,
     children: mswChildren,
     title: 'msw',
+  },
+  {
+    path: '/tanstack-query',
+    element: <TanstackQueryLayout/>,
+    children: tanstackQueryChildren,
+    title: 'tanstack-query',
   }
 ];
