@@ -1,4 +1,5 @@
 import {Route} from "../../../types/common.ts";
+import MswBasic from "../../../pages/msw/MswBasic/MswBasic.tsx";
 
 export const mswChildren: Route[] = [
   {
@@ -8,7 +9,7 @@ export const mswChildren: Route[] = [
   },
   {
     path: 'msw-basic',
-    element: <>MSW</>,
+    element: <MswBasic/>,
     title: 'MSW Basic',
   },
 ];
