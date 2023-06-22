@@ -17,18 +17,15 @@ import ListItemText from '@mui/material/ListItemText';
 import PlayCircleFilledWhiteIcon from '@mui/icons-material/PlayCircleFilledWhite';
 import {useNavigate} from 'react-router-dom';
 import {ReactNode, useState} from 'react';
-import {AppBar, DrawerHeader, Main} from "../styles/styles.ts";
-import {drawerWidth} from "../styles/styles.ts";
+import {AppBar, DrawerHeader, Main} from "./styles.ts";
+import {drawerWidth} from "./styles.ts";
 import {Route} from "../../../types/common.ts";
-import {reactChildren} from "../../../router/routes/children/reactChildren.tsx";
 
 interface LayoutProps {
   title: string;
   routes: Route[],
   render: ReactNode
 }
-
-const findTitleByPath = (path: string) => reactChildren.find((child) => child.path === path)?.title;
 
 export default function Layout({title, routes, render}: LayoutProps) {
   const navigate = useNavigate();
@@ -42,6 +39,12 @@ export default function Layout({title, routes, render}: LayoutProps) {
 
   const handleDrawerClose = () => {
     setOpen(false);
+  };
+
+  const findTitleByPath = (path: string) => {
+    const context = path.split('/');
+    const realPath = context[context.length - 1];
+    return routes.find((child) => child.path === realPath)?.title;
   };
 
   return (
