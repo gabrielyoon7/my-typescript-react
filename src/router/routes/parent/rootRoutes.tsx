@@ -4,6 +4,8 @@ import {reactChildren} from "../children/reactChildren.tsx";
 import {Route} from "../../../types/common.ts";
 import {recoilChildren} from "../children/recoilChildren.tsx";
 import RecoilLayout from "../../../components/layout/RecoilLayout.tsx";
+import {mswChildren} from "../children/mswChildren.tsx";
+import MswLayout from "../../../components/layout/MswLayout.tsx";
 
 export const rootRoutes: Route[] = [
   {
@@ -23,4 +25,10 @@ export const rootRoutes: Route[] = [
     children: recoilChildren,
     title: 'recoil',
   },
+  {
+    path: '/msw',
+    element: <MswLayout/>,
+    children: mswChildren,
+    title: 'msw',
+  }
 ];
