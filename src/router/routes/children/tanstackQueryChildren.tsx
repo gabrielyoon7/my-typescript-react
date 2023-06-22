@@ -1,5 +1,6 @@
 import {Route} from "../../../types/common.ts";
 import TanstackQuerySimple from "../../../pages/tanstackQuery/TanstackQuerySimple";
+import TanstackQueryBasic from "../../../pages/tanstackQuery/TanstackQueryBasic";
 
 export const tanstackQueryChildren: Route[] = [
   {
@@ -11,5 +12,10 @@ export const tanstackQueryChildren: Route[] = [
     path: 'tanstack-query-simple',
     element: <TanstackQuerySimple/>,
     title: 'Tanstack Query Simple',
+  },
+  {
+    path: 'tanstack-query-basic',
+    element: <TanstackQueryBasic/>,
+    title: 'Tanstack Query Basic',
   },
 ];
