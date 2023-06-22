@@ -1,6 +1,6 @@
 import {useQuery} from "@tanstack/react-query";
 
-function TanstackQueryBasic() {
+function TanstackQuerySimple() {
   const {isLoading, error, data} = useQuery({
     queryKey: ['repoData'],
     queryFn: () =>
@@ -24,4 +24,4 @@ function TanstackQueryBasic() {
   );
 }
 
-export default TanstackQueryBasic;
+export default TanstackQuerySimple;
