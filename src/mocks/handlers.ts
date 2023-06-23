@@ -113,8 +113,6 @@ export const handlers = [
 
   rest.get('/api/data', (req, res, ctx) => {
 
-    console.log('get msw data from : /api/data');
-
     const items = getSessionStorage<TodoItem[]>(SESSION_KEY_OPTIMISTIC_UPDATES, []);
 
     return res(
@@ -128,21 +126,20 @@ export const handlers = [
   }),
 
   rest.post('/api/data', (req, res, ctx) => {
-    console.log('post msw data from :  /api/data');
 
     const items = getSessionStorage<TodoItem[]>(SESSION_KEY_OPTIMISTIC_UPDATES, []);
 
-    const text = req.body as string;
+    const {text} = req.body as { text: string };
 
     // sometimes it will fail, this will cause a regression on the UI
 
     if (Math.random() > 0.7) {
+      alert('failed');
       return res(
         ctx.status(500),
         ctx.json({message: 'Could not add item!'})
       );
     }
-
     const newTodo: TodoItem = {id: Math.random().toString(), text: text.toUpperCase()};
     setSessionStorage<TodoItem[]>(SESSION_KEY_OPTIMISTIC_UPDATES, [...items, newTodo]);
     return res(
