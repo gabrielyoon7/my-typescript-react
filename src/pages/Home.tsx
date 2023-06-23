@@ -1,5 +1,5 @@
-import Layout from "./styles/Layout.tsx";
-import {rootRoutes} from "../../router/routes/parent/rootRoutes.tsx";
+import Layout from "../components/layouts/Layout.tsx";
+import { rootRoutes } from "../router/routes/parent/rootRoutes.tsx";
 
 export default function Home() {
 
