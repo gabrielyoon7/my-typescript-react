@@ -1,13 +1,13 @@
-import { reactChildren } from "../children/reactChildren.tsx";
-import { Route } from "../../../types/common.ts";
-import { recoilChildren } from "../children/recoilChildren.tsx";
-import { mswChildren } from "../children/mswChildren.tsx";
-import { tanstackQueryChildren } from "../children/tanstackQueryChildren.tsx";
-import Layout from "../../../components/layouts/Layout.tsx";
-import { Outlet } from "react-router-dom";
-import { RecoilRoot } from "recoil";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import {reactChildren} from "../children/reactChildren.tsx";
+import {Route} from "../../../types/common.ts";
+import {recoilChildren} from "../children/recoilChildren.tsx";
+import {mswChildren} from "../children/mswChildren.tsx";
+import {tanstackQueryChildren} from "../children/tanstackQueryChildren.tsx";
+import Layout from "../../../components/Layout";
+import {Outlet} from "react-router-dom";
+import {RecoilRoot} from "recoil";
+import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
+import {ReactQueryDevtools} from "@tanstack/react-query-devtools";
 import Home from "../../../pages/Home.tsx";
 
 const queryClient = new QueryClient();
@@ -15,7 +15,7 @@ const queryClient = new QueryClient();
 export const rootRoutes: Route[] = [
   {
     path: '/',
-    element: <Home />,
+    element: <Home/>,
     title: 'README',
   },
   {
@@ -24,7 +24,7 @@ export const rootRoutes: Route[] = [
       <Layout
         title="React/TS"
         routes={reactChildren}
-        render={<Outlet />}
+        render={<Outlet/>}
       />
     ),
     children: reactChildren,
@@ -38,7 +38,7 @@ export const rootRoutes: Route[] = [
         routes={recoilChildren}
         render={
           <RecoilRoot>
-            <Outlet />
+            <Outlet/>
           </RecoilRoot>
         }
       />
@@ -52,7 +52,7 @@ export const rootRoutes: Route[] = [
       <Layout
         title="msw"
         routes={mswChildren}
-        render={<Outlet />}
+        render={<Outlet/>}
       />
     ),
     children: mswChildren,
@@ -66,8 +66,8 @@ export const rootRoutes: Route[] = [
         routes={tanstackQueryChildren}
         render={
           <QueryClientProvider client={queryClient}>
-            <Outlet />
-            <ReactQueryDevtools initialIsOpen={false} />
+            <Outlet/>
+            <ReactQueryDevtools initialIsOpen={false}/>
           </QueryClientProvider>
         }
       />

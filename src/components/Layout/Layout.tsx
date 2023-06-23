@@ -1,4 +1,4 @@
-import { useTheme } from '@mui/material/styles';
+import {useTheme} from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import Toolbar from '@mui/material/Toolbar';
@@ -15,11 +15,11 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import PlayCircleFilledWhiteIcon from '@mui/icons-material/PlayCircleFilledWhite';
-import { useNavigate } from 'react-router-dom';
-import { ReactNode, useState } from 'react';
-import { AppBar, DrawerHeader, Main } from "./styles.ts";
-import { drawerWidth } from "./styles.ts";
-import { Route } from "../../types/common.ts";
+import {useNavigate} from 'react-router-dom';
+import {ReactNode, useState} from 'react';
+import {AppBar, DrawerHeader, Main} from "./Layout.style.ts";
+import {drawerWidth} from "./Layout.style.ts";
+import {Route} from "../../types/common.ts";
 
 interface LayoutProps {
   title: string;
@@ -27,7 +27,7 @@ interface LayoutProps {
   render: ReactNode
 }
 
-export default function Layout({ title, routes, render }: LayoutProps) {
+export default function Layout({title, routes, render}: LayoutProps) {
   const navigate = useNavigate();
 
   const theme = useTheme();
@@ -48,7 +48,7 @@ export default function Layout({ title, routes, render }: LayoutProps) {
   };
 
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{display: 'flex'}}>
       <AppBar position="fixed" open={open}>
         <Toolbar>
           <IconButton
@@ -56,9 +56,9 @@ export default function Layout({ title, routes, render }: LayoutProps) {
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
-            sx={{ mr: 2, ...(open && { display: 'none' }) }}
+            sx={{mr: 2, ...(open && {display: 'none'})}}
           >
-            <MenuIcon />
+            <MenuIcon/>
           </IconButton>
           <Typography variant="h6" noWrap component="div">
             {title} : {findTitleByPath(location.pathname)}
@@ -80,13 +80,13 @@ export default function Layout({ title, routes, render }: LayoutProps) {
       >
         <DrawerHeader>
           <IconButton onClick={() => navigate('/')}>
-            <HomeIcon />
+            <HomeIcon/>
           </IconButton>
           <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+            {theme.direction === 'ltr' ? <ChevronLeftIcon/> : <ChevronRightIcon/>}
           </IconButton>
         </DrawerHeader>
-        <Divider />
+        <Divider/>
         <List>
           {routes.map((child, i) => (
 
@@ -97,17 +97,17 @@ export default function Layout({ title, routes, render }: LayoutProps) {
             >
               <ListItemButton>
                 <ListItemIcon>
-                  <PlayCircleFilledWhiteIcon />
+                  <PlayCircleFilledWhiteIcon/>
                 </ListItemIcon>
-                <ListItemText primary={child.title} />
+                <ListItemText primary={child.title}/>
               </ListItemButton>
             </ListItem>
           ))}
         </List>
-        <Divider />
+        <Divider/>
       </Drawer>
       <Main open={open}>
-        <DrawerHeader />
+        <DrawerHeader/>
         <Box>
           {render}
         </Box>
