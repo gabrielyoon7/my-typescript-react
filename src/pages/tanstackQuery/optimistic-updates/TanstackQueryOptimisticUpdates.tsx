@@ -26,7 +26,7 @@ function useTodos() {
   return useQuery({queryKey: ['todos'], queryFn: fetchTodos});
 }
 
-export default function TanstackQueryOptimisticUpdates() {
+function Example() {
   const queryClient = useQueryClient();
   const [text, setText] = React.useState('');
   const {isFetching, ...queryInfo} = useTodos();
@@ -110,5 +110,15 @@ export default function TanstackQueryOptimisticUpdates() {
       {queryInfo.isLoading && 'Loading'}
       {queryInfo.error instanceof Error && queryInfo.error.message}
     </div>
+  );
+}
+
+export default function TanstackQueryOptimisticUpdates() {
+  return (
+    <>
+      <Example/>
+      <hr/>
+      <Example/>
+    </>
   );
 }
