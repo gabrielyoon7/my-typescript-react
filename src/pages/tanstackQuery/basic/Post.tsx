@@ -1,6 +1,6 @@
 import axios, {AxiosError} from "axios";
 import {useQuery} from "@tanstack/react-query";
-import {Todo} from "./type.ts";
+import {PostType} from "./type.ts";
 import {Dispatch, SetStateAction} from "react";
 
 
@@ -12,7 +12,7 @@ const getPostById = async (id: number) => {
 };
 
 function usePost(postId: number) {
-  return useQuery<Todo, AxiosError>(['post', postId], () => getPostById(postId), {
+  return useQuery<PostType, AxiosError>(['post', postId], () => getPostById(postId), {
     enabled: !!postId,
   });
 }

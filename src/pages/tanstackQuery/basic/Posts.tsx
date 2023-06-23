@@ -1,11 +1,11 @@
 import {Dispatch, SetStateAction} from "react";
 import {useQuery, useQueryClient} from "@tanstack/react-query";
-import {Todo} from "./type.ts";
+import {PostType} from "./type.ts";
 import axios, {AxiosError} from "axios";
 
 function usePosts() {
-  return useQuery<Todo[], AxiosError>(['posts'], async () => {
-    const {data} = await axios.get<Todo[]>(
+  return useQuery<PostType[], AxiosError>(['posts'], async () => {
+    const {data} = await axios.get<PostType[]>(
       'https://jsonplaceholder.typicode.com/posts'
     );
     return data;
