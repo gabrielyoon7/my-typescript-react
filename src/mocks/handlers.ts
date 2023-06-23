@@ -2,6 +2,9 @@
 import {rest} from 'msw';
 import todos from './json-placeholders/todos.json';
 import photos from './json-placeholders/photos.json';
+import {getSessionStorage, setSessionStorage} from "../utils/storage.ts";
+import {SESSION_KEY_OPTIMISTIC_UPDATES} from "../store/storageKeys.ts";
+import {TodoItem, Todos} from "../pages/tanstackQuery/optimistic-updates/TanstackQueryOptimisticUpdates.tsx";
 
 export const handlers = [
   rest.post('/login', (req, res, ctx) => {
@@ -105,6 +108,45 @@ export const handlers = [
       ctx.delay(500),
       ctx.status(200),
       ctx.json([]),
+    );
+  }),
+
+  rest.get('/api/data', (req, res, ctx) => {
+
+    console.log('get msw data from : /api/data');
+
+    const items = getSessionStorage<TodoItem[]>(SESSION_KEY_OPTIMISTIC_UPDATES, []);
+
+    return res(
+      ctx.delay(1000),
+      ctx.json({
+        ts: Date.now(),
+        items,
+      })
+    );
+
+  }),
+
+  rest.post('/api/data', (req, res, ctx) => {
+    console.log('post msw data from :  /api/data');
+
+    const items = getSessionStorage<TodoItem[]>(SESSION_KEY_OPTIMISTIC_UPDATES, []);
+
+    const text = req.body as string;
+
+    // sometimes it will fail, this will cause a regression on the UI
+
+    if (Math.random() > 0.7) {
+      return res(
+        ctx.status(500),
+        ctx.json({message: 'Could not add item!'})
+      );
+    }
+
+    const newTodo: TodoItem = {id: Math.random().toString(), text: text.toUpperCase()};
+    setSessionStorage<TodoItem[]>(SESSION_KEY_OPTIMISTIC_UPDATES, [...items, newTodo]);
+    return res(
+      ctx.json(newTodo)
     );
   }),
 ];
