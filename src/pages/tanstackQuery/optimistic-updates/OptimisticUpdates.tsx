@@ -6,16 +6,8 @@ import {
   useQueryClient,
   useMutation,
 } from '@tanstack/react-query';
+import {Todos} from "./types.ts";
 
-export interface TodoItem {
-  id: string;
-  text: string;
-}
-
-export interface Todos {
-  items: readonly TodoItem[];
-  ts: number;
-}
 
 async function fetchTodos(): Promise<Todos> {
   const res = await axios.get('/api/data');
@@ -26,7 +18,7 @@ function useTodos() {
   return useQuery({queryKey: ['todos'], queryFn: fetchTodos});
 }
 
-export default function Example() {
+export default function OptimisticUpdates() {
   const queryClient = useQueryClient();
   const [text, setText] = React.useState('');
   const {isFetching, ...queryInfo} = useTodos();
@@ -72,12 +64,10 @@ export default function Example() {
   return (
     <div>
       <p>
-        In this example, new items can be created using a mutation. The new item
-        will be optimistically added to the list in hopes that the server
-        accepts the item. If it does, the list is refetched with the true items
-        from the list. Every now and then, the mutation may fail though. When
-        that happens, the previous list of items is restored and the list is
-        again refetched from the server.
+        이 예제에서는 mutation을 사용하여 새 항목을 만들 수 있습니다.
+        서버가 항목을 수락하기를 바라며 새 항목이 목록에 낙관적으로 추가됩니다.
+        이 경우 목록은 목록의 실제 항목으로 다시 가져옵니다.
+        가끔은 돌연변이가 실패할 수도 있습니다. 실패하는 경우 이전 항목 목록이 복원되고 서버에서 목록을 다시 가져옵니다.
       </p>
       <form
         onSubmit={(e) => {

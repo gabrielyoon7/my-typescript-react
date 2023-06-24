@@ -1,8 +1,8 @@
 import {Route} from "../../../types/common.ts";
 import TanstackQueryBasic from "../../../pages/tanstackQuery/basic/TanstackQueryBasic.tsx";
 import TanstackQuerySimple from "../../../pages/tanstackQuery/simple/TanstackQuerySimple.tsx";
-import TanstackQueryOptimisticUpdates
-  from "../../../pages/tanstackQuery/optimistic-updates/TanstackQueryOptimisticUpdates.tsx";
+import TanstackQueryOptimisticUpdatesRoot
+  from "../../../pages/tanstackQuery/optimistic-updates/TanstackQueryOptimisticUpdatesRoot.tsx";
 
 export const tanstackQueryChildren: Route[] = [
   {
@@ -22,7 +22,7 @@ export const tanstackQueryChildren: Route[] = [
   },
   {
     path: 'optimistic-updates',
-    element: <TanstackQueryOptimisticUpdates/>,
+    element: <TanstackQueryOptimisticUpdatesRoot/>,
     title: 'Optimistic Updates',
   },
 ];
