@@ -30,7 +30,7 @@ export const rootRoutes: Route[] = [
       />
     ),
     children: reactChildren,
-    title: '리액트',
+    title: 'React',
   },
   {
     path: '/recoil',
