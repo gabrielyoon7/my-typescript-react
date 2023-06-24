@@ -9,6 +9,7 @@ import {RecoilRoot} from "recoil";
 import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
 import {ReactQueryDevtools} from "@tanstack/react-query-devtools";
 import Home from "../../../pages/Home.tsx";
+import {zustandChildren} from "../children/zustandChildren.tsx";
 
 const queryClient = new QueryClient();
 
@@ -80,5 +81,21 @@ export const rootRoutes: Route[] = [
     ),
     children: tanstackQueryChildren,
     title: 'tanstack-query',
-  }
+  },
+  {
+    path: '/zustand',
+    element: (
+      <Layout
+        title="zustand"
+        routes={zustandChildren}
+        render={
+          <Outlet/>
+        }
+        color="black"
+        backgroundColor="#FFBB00"
+      />
+    ),
+    children: zustandChildren,
+    title: 'zustand',
+  },
 ];
