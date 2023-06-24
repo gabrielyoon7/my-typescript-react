@@ -1,25 +1,22 @@
-import {useTheme} from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import Drawer from '@mui/material/Drawer';
-import Toolbar from '@mui/material/Toolbar';
-import List from '@mui/material/List';
-import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import HomeIcon from '@mui/icons-material/Home';
+import * as React from 'react';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import CssBaseline from '@mui/material/CssBaseline';
+import Divider from '@mui/material/Divider';
+import Drawer from '@mui/material/Drawer';
+import IconButton from '@mui/material/IconButton';
+import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import PlayCircleFilledWhiteIcon from '@mui/icons-material/PlayCircleFilledWhite';
-import {useNavigate} from 'react-router-dom';
-import {ReactNode, useState} from 'react';
-import {AppBar, DrawerHeader, Main} from "./Layout.style.ts";
-import {drawerWidth} from "./Layout.style.ts";
+import MenuIcon from '@mui/icons-material/Menu';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
 import {Route} from "../../types/common.ts";
+import {ReactNode} from "react";
+import {useNavigate} from "react-router-dom";
+import {DrawerHeader, drawerWidth} from "./Layout.style.ts";
 
 interface LayoutProps {
   title: string;
@@ -30,15 +27,10 @@ interface LayoutProps {
 export default function Layout({title, routes, render}: LayoutProps) {
   const navigate = useNavigate();
 
-  const theme = useTheme();
-  const [open, setOpen] = useState(true);
+  const [mobileOpen, setMobileOpen] = React.useState(false);
 
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
-
-  const handleDrawerClose = () => {
-    setOpen(false);
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
   };
 
   const findTitleByPath = (path: string) => {
@@ -47,16 +39,48 @@ export default function Layout({title, routes, render}: LayoutProps) {
     return routes.find((child) => child.path === realPath)?.title;
   };
 
+  const drawer = (
+    <div>
+      <DrawerHeader>
+        <IconButton onClick={() => navigate('/')}>
+          <HomeIcon/>
+        </IconButton>
+      </DrawerHeader>
+      <Divider/>
+      <List>
+        {routes.map((child, i) => (
+
+          <ListItem
+            key={`home-route-${i}`}
+            disablePadding
+            onClick={() => navigate(child.path)}
+          >
+            <ListItemButton>
+              <ListItemText primary={child.title}/>
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+    </div>
+  );
+
   return (
     <Box sx={{display: 'flex'}}>
-      <AppBar position="fixed" open={open}>
+      <CssBaseline/>
+      <AppBar
+        position="fixed"
+        sx={{
+          width: {md: `calc(100% - ${drawerWidth}px)`},
+          ml: {md: `${drawerWidth}px`},
+        }}
+      >
         <Toolbar>
           <IconButton
             color="inherit"
             aria-label="open drawer"
-            onClick={handleDrawerOpen}
             edge="start"
-            sx={{mr: 2, ...(open && {display: 'none'})}}
+            onClick={handleDrawerToggle}
+            sx={{mr: 2, display: {md: 'none'}}}
           >
             <MenuIcon/>
           </IconButton>
@@ -65,53 +89,44 @@ export default function Layout({title, routes, render}: LayoutProps) {
           </Typography>
         </Toolbar>
       </AppBar>
-      <Drawer
-        sx={{
-          width: drawerWidth,
-          flexShrink: 0,
-          '& .MuiDrawer-paper': {
-            width: drawerWidth,
-            boxSizing: 'border-box',
-          },
-        }}
-        variant="persistent"
-        anchor="left"
-        open={open}
+      <Box
+        component="nav"
+        sx={{width: {md: drawerWidth}, flexShrink: {md: 0}}}
+        aria-label="mailbox folders"
       >
-        <DrawerHeader>
-          <IconButton onClick={() => navigate('/')}>
-            <HomeIcon/>
-          </IconButton>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'ltr' ? <ChevronLeftIcon/> : <ChevronRightIcon/>}
-          </IconButton>
-        </DrawerHeader>
-        <Divider/>
-        <List>
-          {routes.map((child, i) => (
-
-            <ListItem
-              key={`home-route-${i}`}
-              disablePadding
-              onClick={() => navigate(child.path)}
-            >
-              <ListItemButton>
-                <ListItemIcon>
-                  <PlayCircleFilledWhiteIcon/>
-                </ListItemIcon>
-                <ListItemText primary={child.title}/>
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
-        <Divider/>
-      </Drawer>
-      <Main open={open}>
-        <DrawerHeader/>
-        <Box>
-          {render}
-        </Box>
-      </Main>
+        {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
+        <Drawer
+          variant="temporary"
+          open={mobileOpen}
+          onClose={handleDrawerToggle}
+          ModalProps={{
+            keepMounted: true, // Better open performance on mobile.
+          }}
+          sx={{
+            display: {xs: 'block', md: 'none'},
+            '& .MuiDrawer-paper': {boxSizing: 'border-box', width: drawerWidth},
+          }}
+        >
+          {drawer}
+        </Drawer>
+        <Drawer
+          variant="permanent"
+          sx={{
+            display: {xs: 'none', md: 'block'},
+            '& .MuiDrawer-paper': {boxSizing: 'border-box', width: drawerWidth},
+          }}
+          open
+        >
+          {drawer}
+        </Drawer>
+      </Box>
+      <Box
+        component="main"
+        sx={{flexGrow: 1, p: 1, width: {md: `calc(100% - ${drawerWidth}px)`}}}
+      >
+        <Toolbar/>
+        {render}
+      </Box>
     </Box>
   );
 }
