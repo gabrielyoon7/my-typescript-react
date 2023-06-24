@@ -1,5 +1,4 @@
 import {Route} from "../../../types/common.ts";
-import Counter from "../../../pages/zustand/Counter";
 
 export const zustandChildren: Route[] = [
   {
@@ -9,7 +8,7 @@ export const zustandChildren: Route[] = [
   },
   {
     path: 'counter',
-    element: <Counter/>,
+    element: <></>,
     title: 'counter'
   },
 ];
