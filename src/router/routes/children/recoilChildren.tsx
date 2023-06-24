@@ -18,16 +18,16 @@ export const recoilChildren: Route[] = [
   {
     path: 'todo-with-custom-hook',
     element: <TodoWithCustomHookPage/>,
-    title: 'Todo With Custom Hook',
+    title: 'TodoExample With Custom Hook',
   },
   {
     path: 'todo-with-use-recoil-callback',
     element: <TodoWithUseRecoilCallbackPage/>,
-    title: 'Todo With useRecoilCallback',
+    title: 'TodoExample With useRecoilCallback',
   },
   {
     path: 'todo-with-get-callback',
     element: <TodoWithGetCallbackPage/>,
-    title: 'Todo With getCallback',
+    title: 'TodoExample With getCallback',
   },
 ];

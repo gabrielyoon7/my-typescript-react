@@ -37,7 +37,7 @@ export const rootRoutes: Route[] = [
     path: '/recoil',
     element: (
       <Layout
-        title="Recoil with Todo"
+        title="Recoil with TodoExample"
         routes={recoilChildren}
         render={
           <RecoilRoot>

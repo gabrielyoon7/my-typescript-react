@@ -15,7 +15,7 @@ async function fetchTodos(): Promise<Todos> {
 }
 
 function useTodos() {
-  return useQuery({queryKey: ['todos'], queryFn: fetchTodos});
+  return useQuery({queryKey: ['todo'], queryFn: fetchTodos});
 }
 
 export default function OptimisticUpdates() {
@@ -30,14 +30,14 @@ export default function OptimisticUpdates() {
       setText('');
       // Cancel any outgoing refetches
       // (so they don't overwrite our optimistic update)
-      await queryClient.cancelQueries({queryKey: ['todos']});
+      await queryClient.cancelQueries({queryKey: ['todo']});
 
       // Snapshot the previous value
-      const previousTodos = queryClient.getQueryData<Todos>(['todos']);
+      const previousTodos = queryClient.getQueryData<Todos>(['todo']);
 
       // Optimistically update to the new value
       if (previousTodos) {
-        queryClient.setQueryData<Todos>(['todos'], {
+        queryClient.setQueryData<Todos>(['todo'], {
           ...previousTodos,
           items: [
             ...previousTodos.items,
@@ -52,12 +52,12 @@ export default function OptimisticUpdates() {
     // use the context returned from onMutate to roll back
     onError: (err, variables, context) => {
       if (context?.previousTodos) {
-        queryClient.setQueryData<Todos>(['todos'], context.previousTodos);
+        queryClient.setQueryData<Todos>(['todo'], context.previousTodos);
       }
     },
     // Always refetch after error or success:
     onSettled: () => {
-      queryClient.invalidateQueries({queryKey: ['todos']});
+      queryClient.invalidateQueries({queryKey: ['todo']});
     },
   });
 
