@@ -4,7 +4,7 @@ import todos from './json-placeholders/todos.json';
 import photos from './json-placeholders/photos.json';
 import {getSessionStorage, setSessionStorage} from "../utils/storage.ts";
 import {SESSION_KEY_OPTIMISTIC_UPDATES} from "../store/storageKeys.ts";
-import {TodoItem} from "../pages/tanstackQuery/optimistic-updates/OptimisticUpdates.tsx";
+import {TodoItem} from "../pages/tanstackQuery/optimistic-updates/types.ts";
 
 export const handlers = [
   rest.post('/login', (req, res, ctx) => {
