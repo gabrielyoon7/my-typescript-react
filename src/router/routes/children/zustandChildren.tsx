@@ -1,4 +1,5 @@
 import {Route} from "../../../types/common.ts";
+import CounterRoot from "../../../pages/zustand/counter/CounterRoot.tsx";
 
 export const zustandChildren: Route[] = [
   {
@@ -8,7 +9,7 @@ export const zustandChildren: Route[] = [
   },
   {
     path: 'counter',
-    element: <></>,
+    element: <CounterRoot/>,
     title: 'counter'
   },
 ];
