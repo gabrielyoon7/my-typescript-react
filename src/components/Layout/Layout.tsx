@@ -20,11 +20,13 @@ import {DrawerHeader, drawerWidth} from "./Layout.style.ts";
 
 interface LayoutProps {
   title: string;
-  routes: Route[],
-  render: ReactNode
+  routes: Route[];
+  render: ReactNode;
+  color?: string;
+  backgroundColor?: string;
 }
 
-export default function Layout({title, routes, render}: LayoutProps) {
+export default function Layout({title, routes, render, color, backgroundColor}: LayoutProps) {
   const navigate = useNavigate();
 
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -72,6 +74,7 @@ export default function Layout({title, routes, render}: LayoutProps) {
         sx={{
           width: {md: `calc(100% - ${drawerWidth}px)`},
           ml: {md: `${drawerWidth}px`},
+          backgroundColor: {backgroundColor}
         }}
       >
         <Toolbar>
@@ -84,7 +87,7 @@ export default function Layout({title, routes, render}: LayoutProps) {
           >
             <MenuIcon/>
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
+          <Typography variant="h6" noWrap component="div" color={color}>
             {title} : {findTitleByPath(location.pathname)}
           </Typography>
         </Toolbar>

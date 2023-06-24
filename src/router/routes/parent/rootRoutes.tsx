@@ -25,6 +25,8 @@ export const rootRoutes: Route[] = [
         title="React/TS"
         routes={reactChildren}
         render={<Outlet/>}
+        color="#149eca"
+        backgroundColor="#23272F"
       />
     ),
     children: reactChildren,
@@ -53,6 +55,8 @@ export const rootRoutes: Route[] = [
         title="msw"
         routes={mswChildren}
         render={<Outlet/>}
+        color="#FF6A33"
+        backgroundColor="#000000"
       />
     ),
     children: mswChildren,
@@ -70,6 +74,8 @@ export const rootRoutes: Route[] = [
             <ReactQueryDevtools initialIsOpen={false}/>
           </QueryClientProvider>
         }
+        color="#EF4444"
+        backgroundColor="#1E1E1E"
       />
     ),
     children: tanstackQueryChildren,
