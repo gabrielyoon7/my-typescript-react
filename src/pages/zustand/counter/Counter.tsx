@@ -1,7 +1,7 @@
-import {useStore} from "./useStore.tsx";
+import {useCounter} from "./useCounter.tsx";
 
 function Counter() {
-  const {count, inc} = useStore();
+  const {count, inc} = useCounter();
 
   return (
     <div>
