@@ -15,7 +15,7 @@ interface Action<T> {
   set: SetState<T>;
 }
 
-export const action = <T, R>(callback: ({get, set}: Action<T>) => R): R => {
+export const action = <T, R>(callback: ({get, set}: Action<T>) => R): R /*ReturnType<typeof callback> */ => {
   const get: GetState<T> = (store) => store.getState();
   const set: SetState<T> = (store, newValue) => store.setState(newValue);
   return callback({get, set});
