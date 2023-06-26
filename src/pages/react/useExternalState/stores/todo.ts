@@ -1,5 +1,10 @@
 import {action, store} from "../xState/config/configs.ts";
-import {Todo} from "../types/types.ts";
+
+
+export interface Todo {
+  id: number;
+  content: string;
+}
 
 export const todoStore = store<Todo[]>([
   {id: 0, content: 'hi-0'},
@@ -7,7 +12,12 @@ export const todoStore = store<Todo[]>([
   {id: 2, content: 'hi-2'},
 ]);
 
-export const todoActions = action<Todo[], { addTodo: (value: string) => void, deleteTodo: (id: number) => void }>(
+type TodoActionsType = {
+  addTodo: (value: string) => void,
+  deleteTodo: (id: number) => void
+}
+
+export const todoActions = action<Todo[], TodoActionsType>(
   ({get, set}) => ({
     addTodo: (value: string) => {
       const prevTodo = get(todoStore);
