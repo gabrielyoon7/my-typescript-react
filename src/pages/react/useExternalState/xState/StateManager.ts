@@ -8,12 +8,12 @@ class StateManager<T> implements DataObserver<T> {
     this.state = initialState;
   }
 
-  set = (newState: T) => {
+  setState = (newState: T) => {
     this.state = newState; // 실험결과 반드시 재할당 해야 리액트에서 변화를 감지함 ==> Object.is() 연산 동작
     this.emitChange();
   };
 
-  get = () => {
+  getState = () => { // 값 형태를 반드시 유지해야 오류가 없음
     return this.state;
   };
 
@@ -28,10 +28,6 @@ class StateManager<T> implements DataObserver<T> {
     for (const listener of this.listeners) {
       listener();
     }
-  };
-
-  getSnapshot = () => { // 값 형태를 반드시 유지해야 오류가 없음
-    return this.state;
   };
 }
 

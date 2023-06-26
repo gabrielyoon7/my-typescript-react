@@ -9,16 +9,16 @@ export const todoStore = store<Todo[]>([
 
 export const todoActions = {
   addTodo: (value: string) => {
-    const prevTodo = todoStore.get();
+    const prevTodo = todoStore.getState();
     const newTodo: Todo = {
       id: prevTodo.length,
       content: value
     };
-    todoStore.set([...prevTodo, newTodo]);
+    todoStore.setState([...prevTodo, newTodo]);
   },
   deleteTodo: (id: number) => {
-    const prevTodo = todoStore.get();
+    const prevTodo = todoStore.getState();
     const nextTodo = prevTodo.filter(todo => todo.id !== id);
-    todoStore.set(nextTodo);
+    todoStore.setState(nextTodo);
   }
 };

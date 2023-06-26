@@ -1,8 +1,8 @@
 export interface DataObserver<T> {
   subscribe: (listener: () => void) => () => void;
   emitChange: () => void;
-  set: (newState: T) => void;
-  getSnapshot: () => T;
+  setState: (newState: T) => void;
+  getState: () => T;
 }
 
 // export interface StoreConfig<T> {
