@@ -1,5 +1,5 @@
-import {useExternalState} from "../xState/hooks/hooks.ts";
 import {todoActions, todoStore} from "../stores/todo.ts";
+import {useExternalState} from "../xState";
 
 function TodoList() {
   const [todoList, setTodoList] = useExternalState(todoStore);

@@ -1,4 +1,4 @@
-import {action, store} from "../xState/config/configs.ts";
+import {action, store} from "../xState";
 
 
 export interface Todo {
