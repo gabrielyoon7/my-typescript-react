@@ -1,4 +1,4 @@
-import {store} from "../xState/config/configs.ts";
+import {action, store} from "../xState/config/configs.ts";
 import {Todo} from "../types/types.ts";
 
 export const todoStore = store<Todo[]>([
@@ -7,18 +7,21 @@ export const todoStore = store<Todo[]>([
   {id: 2, content: 'hi-2'},
 ]);
 
-export const todoActions = {
-  addTodo: (value: string) => {
-    const prevTodo = todoStore.getState();
-    const newTodo: Todo = {
-      id: prevTodo.length,
-      content: value
-    };
-    todoStore.setState([...prevTodo, newTodo]);
-  },
-  deleteTodo: (id: number) => {
-    const prevTodo = todoStore.getState();
-    const nextTodo = prevTodo.filter(todo => todo.id !== id);
-    todoStore.setState(nextTodo);
-  }
-};
+export const todoActions = action<Todo[], { addTodo: (value: string) => void, deleteTodo: (id: number) => void }>(
+  ({get, set}) => ({
+    addTodo: (value: string) => {
+      const prevTodo = get(todoStore);
+      const newTodo: Todo = {
+        id: prevTodo.length,
+        content: value
+      };
+      set(todoStore, [...prevTodo, newTodo]);
+    },
+    deleteTodo: (id: number) => {
+      const prevTodo = get(todoStore);
+      const nextTodo = prevTodo.filter(todo => todo.id !== id);
+      set(todoStore, nextTodo);
+    }
+  })
+);
+
