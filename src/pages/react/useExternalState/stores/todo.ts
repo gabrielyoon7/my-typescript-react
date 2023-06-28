@@ -1,4 +1,4 @@
-import {action, store} from "../xState";
+import {action, store} from "../x-state";
 
 
 export interface Todo {
