@@ -1,4 +1,4 @@
-import {DataObserver, GetState, SetState, StoreHandler} from "./types.ts";
+import {DataObserver} from "./types.ts";
 import {useSyncExternalStore} from "react";
 import StateManager from "./StateManager.ts";
 
@@ -19,10 +19,4 @@ export const useExternalValue = <T>(store: DataObserver<T>): T => {
 export const store = <T>(initialState: T) => {
   const stateManager = new StateManager<T>(initialState);
   return stateManager;
-};
-
-export const action = <T, R>(callback: ({get, set}: StoreHandler<T>) => R): R /*ReturnType<typeof callback> */ => {
-  const get: GetState<T> = (store) => store.getState();
-  const set: SetState<T> = (store, newValue) => store.setState(newValue);
-  return callback({get, set});
 };

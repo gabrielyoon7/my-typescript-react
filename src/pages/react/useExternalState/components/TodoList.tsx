@@ -1,4 +1,4 @@
-import {todoActions, todoStore} from "../stores/todo.ts";
+import {todoStore} from "../stores/todo.ts";
 import {useExternalState} from "../x-state";
 
 function TodoList() {
@@ -11,7 +11,10 @@ function TodoList() {
         <div key={todo.id}>
           {todo.content}
           <button
-            onClick={() => todoActions.deleteTodo(todo.id)}
+            onClick={() => {
+              const nextTodos = todoList.filter(prevTodo => prevTodo.id !== todo.id);
+              setTodoList(nextTodos);
+            }}
           >
             삭제
           </button>

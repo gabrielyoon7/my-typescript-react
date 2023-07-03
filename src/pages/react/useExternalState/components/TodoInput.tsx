@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {todoActions} from "../stores/todo.ts";
+import {todoStore} from "../stores/todo.ts";
 
 function TodoInput() {
   const [value, setValue] = useState("");
@@ -9,7 +9,8 @@ function TodoInput() {
       <input value={value} onChange={(e) => setValue(e.target.value)}/>
       <button
         onClick={() => {
-          todoActions.addTodo(value);
+          const prevTodos = todoStore.getState();
+          todoStore.setState([...prevTodos, {id: prevTodos.length, content: 'hi-0'}]);
           setValue("");
         }}
       >

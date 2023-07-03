@@ -1,38 +1,40 @@
 /**
  * 컴포넌트 하나만 테스트 할 때 사용
  */
-import { ChangeEvent, useState, useTransition } from "react";
+
+import { memo, useCallback, useMemo, useState } from "react";
+
+function Box({ params, onClick }: {
+  params: { color: string },
+  onClick: () => void
+}) {
+  console.log('Box 렌더링 됨');
+  return (
+    <div
+      style={{ width: "100px", height: "100px", margin: '3px', backgroundColor: params.color }}
+      onClick={onClick}
+    />
+  );
+}
+const MemoedBox = memo(Box);
 
 function Temp() {
+  const [appRenderCount, setAppRenderCount] = useState(0);
+  const [color, setColor] = useState('red');
 
-  const [input, setInput] = useState("");
-  const [list, setList] = useState<string[]>([]);
-
-  const [isPending, startTransition] = useTransition();
-
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setInput(e.target.value);
-
-    startTransition(() => {
-      const l: string[] = [];
-      console.log(l);
-      for (let i = 0; i < 20000; i++) {
-        // l.push(e.target.value)
-        l.push(e.target.value);
-        setList(l);
-      }
-    });
-  };
+  const params = useMemo(() => ({ color }), [color]);
+  const onClick = useCallback(() => { }, []);
+  console.log(`렌더링 횟수: ${appRenderCount}`);
 
   return (
     <>
-      <input type={"text"} value={input} onChange={handleChange} />
-      {
-        isPending
-          ? <div>Loading..</div>
-          : list.map((item, index) => <div key={index}>{item}</div>)}
-
-
+      <MemoedBox params={params} onClick={onClick} />
+      <button onClick={() => setAppRenderCount(appRenderCount + 1)}>
+        앱 다시 렌더링 하기
+      </button>
+      <button onClick={() => setColor(color === 'red' ? 'blue' : 'red')}>
+        색상 바꾸기
+      </button>
     </>
   );
 }
