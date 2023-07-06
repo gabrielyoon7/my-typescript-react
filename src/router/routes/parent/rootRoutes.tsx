@@ -1,22 +1,23 @@
-import {reactChildren} from "../children/reactChildren.tsx";
-import {Route} from "../../../types/common.ts";
-import {recoilChildren} from "../children/recoilChildren.tsx";
-import {mswChildren} from "../children/mswChildren.tsx";
-import {tanstackQueryChildren} from "../children/tanstackQueryChildren.tsx";
-import Layout from "../../../components/Layout";
-import {Outlet} from "react-router-dom";
-import {RecoilRoot} from "recoil";
-import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
-import {ReactQueryDevtools} from "@tanstack/react-query-devtools";
-import Home from "../../../pages/Home.tsx";
-import {zustandChildren} from "../children/zustandChildren.tsx";
+import { reactChildren } from '../children/reactChildren.tsx';
+import { Route } from '../../../types/common.ts';
+import { recoilChildren } from '../children/recoilChildren.tsx';
+import { mswChildren } from '../children/mswChildren.tsx';
+import { tanstackQueryChildren } from '../children/tanstackQueryChildren.tsx';
+import Layout from '../../../components/Layout';
+import { Outlet } from 'react-router-dom';
+import { RecoilRoot } from 'recoil';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import Home from '../../../pages/Home.tsx';
+import { zustandChildren } from '../children/zustandChildren.tsx';
+import { googleMapsChildren } from '../children/googleMapsChildren.tsx';
 
 const queryClient = new QueryClient();
 
 export const rootRoutes: Route[] = [
   {
     path: '/',
-    element: <Home/>,
+    element: <Home />,
     title: 'README',
   },
   {
@@ -25,7 +26,7 @@ export const rootRoutes: Route[] = [
       <Layout
         title="React/TS"
         routes={reactChildren}
-        render={<Outlet/>}
+        render={<Outlet />}
         color="#149eca"
         backgroundColor="#23272F"
       />
@@ -41,7 +42,7 @@ export const rootRoutes: Route[] = [
         routes={recoilChildren}
         render={
           <RecoilRoot>
-            <Outlet/>
+            <Outlet />
           </RecoilRoot>
         }
       />
@@ -55,7 +56,7 @@ export const rootRoutes: Route[] = [
       <Layout
         title="msw"
         routes={mswChildren}
-        render={<Outlet/>}
+        render={<Outlet />}
         color="#FF6A33"
         backgroundColor="#000000"
       />
@@ -71,8 +72,8 @@ export const rootRoutes: Route[] = [
         routes={tanstackQueryChildren}
         render={
           <QueryClientProvider client={queryClient}>
-            <Outlet/>
-            <ReactQueryDevtools initialIsOpen={false}/>
+            <Outlet />
+            <ReactQueryDevtools initialIsOpen={false} />
           </QueryClientProvider>
         }
         color="#EF4444"
@@ -88,14 +89,26 @@ export const rootRoutes: Route[] = [
       <Layout
         title="zustand"
         routes={zustandChildren}
-        render={
-          <Outlet/>
-        }
+        render={<Outlet />}
         color="black"
         backgroundColor="#FFBB00"
       />
     ),
     children: zustandChildren,
     title: 'zustand',
+  },
+  {
+    path: '/google-maps',
+    element: (
+      <Layout
+        title="Google Maps API"
+        routes={googleMapsChildren}
+        render={<Outlet />}
+        color="red"
+        backgroundColor="white"
+      />
+    ),
+    children: googleMapsChildren,
+    title: 'Google Maps API',
   },
 ];
