@@ -1,13 +1,13 @@
-import { useCallback, useEffect, useRef } from 'react';
+import {CSSProperties, useCallback, useEffect, useRef} from 'react';
 
 interface GoogleMapProps {
   apiKey: string;
   location: { lat: number; lng: number };
-  style?: React.CSSProperties;
+  style: CSSProperties;
   zoom: number;
 }
 
-function VanillaGoogleMap({ apiKey, location, style, zoom }: GoogleMapProps) {
+function VanillaGoogleMap({apiKey, location, style, zoom}: GoogleMapProps) {
   const mapElement = useRef(null);
 
   const loadScript = useCallback((url: string) => {
@@ -20,7 +20,7 @@ function VanillaGoogleMap({ apiKey, location, style, zoom }: GoogleMapProps) {
   }, []);
 
   const initMap = useCallback(() => {
-    const { google } = window;
+    const {google} = window;
     if (!mapElement.current || !google) return;
 
     const map = new google.maps.Map(mapElement.current, {
