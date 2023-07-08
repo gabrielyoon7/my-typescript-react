@@ -122,4 +122,28 @@ export const handlers = [
       ctx.json(todoList)
     );
   }),
+
+  rest.post('/tanstack-query/todo', async (req, res, ctx) => {
+    const body: {
+      text: string
+    } = await req.json();
+
+    const {text} = body;
+
+    const prevTodoList = getSessionStorage<TodoItem[]>(SESSION_KEY_TODO, []);
+    setSessionStorage(SESSION_KEY_TODO,
+      [
+        ...prevTodoList,
+        {
+          id: prevTodoList.length,
+          text: text
+        }
+      ]
+    );
+
+    return res(
+      // Respond with a 200 status code
+      ctx.status(200),
+    );
+  }),
 ];

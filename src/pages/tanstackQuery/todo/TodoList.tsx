@@ -1,14 +1,9 @@
 import {useQuery} from "@tanstack/react-query";
 import {TodoItem} from "../types.ts";
+import {useTodo} from "./useTodo.ts";
 
 function TodoList() {
-  const {isLoading, data} = useQuery({
-    queryKey: ['todos'],
-    queryFn: () =>
-      fetch('/tanstack-query/todo').then(
-        (res) => res.json(),
-      ),
-  });
+  const {isLoading, data} = useTodo();
 
   const todoList: TodoItem[] = data;
 
