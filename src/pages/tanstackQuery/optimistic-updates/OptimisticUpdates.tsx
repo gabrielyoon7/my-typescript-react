@@ -6,7 +6,7 @@ import {
   useQueryClient,
   useMutation,
 } from '@tanstack/react-query';
-import {Todos} from "./types.ts";
+import {Todos} from "../types.ts";
 
 
 async function fetchTodos(): Promise<Todos> {

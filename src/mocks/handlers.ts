@@ -3,43 +3,10 @@ import {rest} from 'msw';
 import todos from './json-placeholders/todos.json';
 import photos from './json-placeholders/photos.json';
 import {getSessionStorage, setSessionStorage} from "../utils/storage.ts";
-import {SESSION_KEY_OPTIMISTIC_UPDATES} from "../store/storageKeys.ts";
-import {TodoItem} from "../pages/tanstackQuery/optimistic-updates/types.ts";
+import {SESSION_KEY_OPTIMISTIC_UPDATES, SESSION_KEY_TODO} from "../store/storageKeys.ts";
+import {TodoItem} from "../pages/tanstackQuery/types.ts";
 
 export const handlers = [
-  rest.post('/login', (req, res, ctx) => {
-    // Persist user's authentication in the session
-    sessionStorage.setItem('is-authenticated', 'true');
-
-    return res(
-      // Respond with a 200 status code
-      ctx.status(200),
-    );
-  }),
-
-  rest.get('/user', (req, res, ctx) => {
-    // Check if the user is authenticated in this session
-    const isAuthenticated = sessionStorage.getItem('is-authenticated');
-
-    if (!isAuthenticated) {
-      // If not authenticated, respond with a 403 error
-      return res(
-        ctx.status(403),
-        ctx.json({
-          errorMessage: 'Not authorized',
-        }),
-      );
-    }
-
-    // If authenticated, return a mocked user details
-    return res(
-      ctx.status(200),
-      ctx.json({
-        username: 'admin',
-      }),
-    );
-  }),
-
   rest.post('/login', (req, res, ctx) => {
     // Persist user's authentication in the session
     sessionStorage.setItem('is-authenticated', 'true');
@@ -144,6 +111,15 @@ export const handlers = [
     setSessionStorage<TodoItem[]>(SESSION_KEY_OPTIMISTIC_UPDATES, [...items, newTodo]);
     return res(
       ctx.json(newTodo)
+    );
+  }),
+
+  rest.get('/tanstack-query/todo', (req, res, ctx) => {
+    const todoList = getSessionStorage<TodoItem[]>(SESSION_KEY_TODO, []);
+
+    return res(
+      ctx.delay(1000),
+      ctx.json(todoList)
     );
   }),
 ];

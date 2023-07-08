@@ -3,6 +3,7 @@ import TanstackQueryBasic from "../../../pages/tanstackQuery/basic/TanstackQuery
 import TanstackQuerySimple from "../../../pages/tanstackQuery/simple/TanstackQuerySimple.tsx";
 import TanstackQueryOptimisticUpdatesRoot
   from "../../../pages/tanstackQuery/optimistic-updates/TanstackQueryOptimisticUpdatesRoot.tsx";
+import TodoRoot from "../../../pages/tanstackQuery/todo/TodoRoot.tsx";
 
 export const tanstackQueryChildren: Route[] = [
   {
@@ -24,5 +25,10 @@ export const tanstackQueryChildren: Route[] = [
     path: 'optimistic-updates',
     element: <TanstackQueryOptimisticUpdatesRoot/>,
     title: 'Optimistic Updates',
+  },
+  {
+    path: 'todo',
+    element: <TodoRoot/>,
+    title: 'Todo Example',
   },
 ];
