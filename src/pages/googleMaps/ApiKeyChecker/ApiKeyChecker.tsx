@@ -17,18 +17,17 @@ function ApiKeyChecker({render}: ApiKeyCheckerProps) {
   };
   return (
     <div>
-      <div>
-        <div>API키를 입력하세요</div>
-        <input type="text" ref={inputRef}/>
-        <button type="submit" onClick={onClick}>
-          전송
-        </button>
-      </div>
-      <div>
-        {
-          apiKey.length > 0 && render(apiKey)
-        }
-      </div>
+      {
+        apiKey.length > 0 ? render(apiKey) : (
+          <div>
+            <div>API키를 입력하세요</div>
+            <input type="text" ref={inputRef}/>
+            <button type="submit" onClick={onClick}>
+              전송
+            </button>
+          </div>
+        )
+      }
     </div>
   );
 }
