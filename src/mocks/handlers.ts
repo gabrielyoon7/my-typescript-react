@@ -118,12 +118,12 @@ export const handlers = [
     const todoList = getSessionStorage<TodoItem[]>(SESSION_KEY_TODO, []);
 
     return res(
-      ctx.delay(1000),
+      ctx.delay(500),
       ctx.json(todoList)
     );
   }),
 
-  rest.post('/tanstack-query/todo', async (req, res, ctx) => {
+  rest.post('/tanstack-query/todo/create', async (req, res, ctx) => {
     const body: {
       text: string
     } = await req.json();
@@ -142,7 +142,7 @@ export const handlers = [
     );
 
     return res(
-      // Respond with a 200 status code
+      ctx.delay(500),
       ctx.status(200),
     );
   }),
