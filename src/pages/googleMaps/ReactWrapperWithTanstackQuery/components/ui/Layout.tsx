@@ -1,15 +1,13 @@
-import StationCount from "./StatiionCount";
-import ZoomController from "./ZoomController";
+import StationCount from './StatiionCount';
+import ZoomController from './ZoomController';
 
 function Layout() {
-
-
   return (
     <>
-      <StationCount/>
-      <ZoomController/>
+      <StationCount />
+      <ZoomController />
     </>
-  )
+  );
 }
 
 export default Layout;

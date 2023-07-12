@@ -1,7 +1,7 @@
 import axios from "axios";
-import {Station, StationsRequest} from "../types/type";
-import {useQuery} from "@tanstack/react-query";
-import {googleMapStore} from "../store/googleMapStore";
+import { Station, StationsRequest } from "../types/type";
+import { useQuery } from "@tanstack/react-query";
+import { googleMapStore } from "../store/googleMapStore";
 
 const getDisplayPosition = (map: google.maps.Map) => {
   const center = map.getCenter() as google.maps.LatLng;
@@ -17,8 +17,8 @@ const getDisplayPosition = (map: google.maps.Map) => {
     latitude: centerY,
     longitudeDelta: deltaX,
     latitudeDelta: deltaY
-  } as StationsRequest
-}
+  } as StationsRequest;
+};
 
 export async function fetchStations(): Promise<Station[]> {
   const map = googleMapStore.getState();
@@ -32,6 +32,6 @@ export async function fetchStations(): Promise<Station[]> {
 }
 
 export function useStations() {
-  return useQuery({queryKey: ['stations'], queryFn: fetchStations})
+  return useQuery({ queryKey: ['stations'], queryFn: fetchStations });
 }
 

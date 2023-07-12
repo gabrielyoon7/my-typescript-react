@@ -1,7 +1,6 @@
-import {Status, Wrapper} from "@googlemaps/react-wrapper";
-import GoogleMap from "./components/googleMaps/GoogleMap";
-import Layout from "./components/ui/Layout";
-
+import { Status, Wrapper } from '@googlemaps/react-wrapper';
+import GoogleMap from './components/googleMaps/GoogleMap';
+import Layout from './components/ui/Layout';
 
 const render = (status: Status) => {
   switch (status) {
@@ -25,15 +24,11 @@ const render = (status: Status) => {
   }
 };
 
-function ReactWrapperWithTanstackQueryRoot({apiKey}: { apiKey: string }) {
-
+function ReactWrapperWithTanstackQueryRoot({ apiKey }: { apiKey: string }) {
   return (
     <>
-      <Wrapper
-        apiKey={`${apiKey}`}
-        render={render}
-      />
-      <Layout/>
+      <Wrapper apiKey={`${apiKey}`} render={render} />
+      <Layout />
     </>
   );
 }

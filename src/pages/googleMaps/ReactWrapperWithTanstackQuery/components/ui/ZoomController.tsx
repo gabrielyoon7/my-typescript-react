@@ -1,24 +1,31 @@
-import {MouseEventHandler, ReactNode} from "react";
-import {googleMapStore} from "../../store/googleMapStore";
-import {useExternalValue} from "../../utils/external-state";
+import { MouseEventHandler, ReactNode } from 'react';
+import { googleMapStore } from '../../store/googleMapStore';
+import { useExternalValue } from '../../utils/external-state';
 
-function BottomRightBox({children}: { children: ReactNode }) {
+function BottomRightBox({ children }: { children: ReactNode }) {
   return (
-    <div style={{
-      zIndex: 999,
-      position: 'fixed',
-      bottom: 10,
-      right: 10,
-      backgroundColor: 'white',
-      padding: 10,
-      boxShadow: '1px 1px 2px gray',
-    }}>
+    <div
+      style={{
+        zIndex: 999,
+        position: 'fixed',
+        bottom: 10,
+        right: 10,
+        backgroundColor: 'white',
+        padding: 10,
+        boxShadow: '1px 1px 2px gray',
+      }}>
       {children}
     </div>
   );
 }
 
-function ControlButton({onClick, children}: { onClick: MouseEventHandler<HTMLButtonElement>, children: ReactNode }) {
+function ControlButton({
+  onClick,
+  children,
+}: {
+  onClick: MouseEventHandler<HTMLButtonElement>;
+  children: ReactNode;
+}) {
   return (
     <div>
       <button
@@ -32,8 +39,7 @@ function ControlButton({onClick, children}: { onClick: MouseEventHandler<HTMLBut
           width: '45px',
           height: '45px',
           margin: '5px',
-        }}
-      >
+        }}>
         {children}
       </button>
     </div>
@@ -41,7 +47,6 @@ function ControlButton({onClick, children}: { onClick: MouseEventHandler<HTMLBut
 }
 
 function ZoomController() {
-
   const googleMap = useExternalValue(googleMapStore);
 
   const onClickButton = (type: '+' | '-') => {
