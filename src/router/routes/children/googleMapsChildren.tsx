@@ -1,6 +1,12 @@
 import {Route} from '../../../types/common.ts';
 import ApiKeyChecker from "../../../pages/googleMaps/ApiKeyChecker/ApiKeyChecker.tsx";
 import VanillaGoogleMap from "../../../pages/googleMaps/VanillaGoogleMap";
+import ReactWrapperWithTanstackQueryRoot
+  from "../../../pages/googleMaps/ReactWrapperWithTanstackQuery/ReactWrapperWithTanstackQueryRoot.tsx";
+import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
+import {ReactQueryDevtools} from "@tanstack/react-query-devtools";
+
+const queryClient = new QueryClient();
 
 export const googleMapsChildren: Route[] = [
   {
@@ -26,4 +32,21 @@ export const googleMapsChildren: Route[] = [
     ),
     title: 'Vanilla Google Map',
   },
+  {
+    path: 'react-wrapper-with-tanstack-query',
+    element: (
+      <QueryClientProvider client={queryClient}>
+        <ApiKeyChecker
+          render={(apiKey) => (
+            <ReactWrapperWithTanstackQueryRoot
+              apiKey={apiKey}
+            />
+          )}
+        />
+        <ReactQueryDevtools initialIsOpen={false}/>
+      </QueryClientProvider>
+    ),
+    title: 'React Wrapper With TanstackQuery',
+  },
+
 ];

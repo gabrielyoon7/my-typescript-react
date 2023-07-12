@@ -5,6 +5,8 @@ import photos from './json-placeholders/photos.json';
 import {getSessionStorage, setSessionStorage} from "../utils/storage.ts";
 import {SESSION_KEY_OPTIMISTIC_UPDATES, SESSION_KEY_TODO} from "../store/storageKeys.ts";
 import {TodoItem} from "../pages/tanstackQuery/types.ts";
+import {StationsRequest} from "../pages/googleMaps/ReactWrapperWithTanstackQuery/types/type.ts";
+import {markers} from "../pages/googleMaps/ReactWrapperWithTanstackQuery/data/markers.ts";
 
 export const handlers = [
   rest.post('/login', (req, res, ctx) => {
@@ -144,6 +146,30 @@ export const handlers = [
     return res(
       ctx.delay(500),
       ctx.status(200),
+    );
+  }),
+
+
+  rest.post('/getStations', async (req, res, ctx) => {
+    const body: StationsRequest = await req.json();
+    const {longitude, latitude, longitudeDelta, latitudeDelta} = body;
+    // console.log(lng, lat, deltaX, deltaY,)
+
+    const y1 = (latitude + latitudeDelta);
+    const y2 = (latitude - latitudeDelta);
+    const x1 = (longitude + longitudeDelta);
+    const x2 = (longitude - longitudeDelta);
+
+    const foundMarkers = markers.filter((marker) =>
+      (marker.latitude < y1 && marker.latitude > y2) && (marker.longitude < x1 && marker.longitude > x2)
+    );
+    console.log(foundMarkers.length);
+    // console.log(x1, x2, y1, y2)
+    return res(
+      // Respond with a 200 status code
+      ctx.delay(200),
+      ctx.status(200),
+      ctx.json(foundMarkers)
     );
   }),
 ];
