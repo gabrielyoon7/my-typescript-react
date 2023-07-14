@@ -4,6 +4,7 @@ import TanstackQuerySimple from "../../../pages/tanstackQuery/simple/TanstackQue
 import TanstackQueryOptimisticUpdatesRoot
   from "../../../pages/tanstackQuery/optimistic-updates/TanstackQueryOptimisticUpdatesRoot.tsx";
 import TodoRoot from "../../../pages/tanstackQuery/todo/TodoRoot.tsx";
+import DynamicSearchRoot from "../../../pages/tanstackQuery/dynamic-search/DynamicSearchRoot.tsx";
 
 export const tanstackQueryChildren: Route[] = [
   {
@@ -31,4 +32,9 @@ export const tanstackQueryChildren: Route[] = [
     element: <TodoRoot/>,
     title: 'Todo Example',
   },
+  {
+    path: 'dynamic-search',
+    element: <DynamicSearchRoot/>,
+    title: 'Dynamic Search'
+  }
 ];
