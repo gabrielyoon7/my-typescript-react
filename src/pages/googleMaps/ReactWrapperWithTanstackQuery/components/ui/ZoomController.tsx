@@ -1,12 +1,12 @@
-import { MouseEventHandler, ReactNode } from 'react';
-import { googleMapStore } from '../../store/googleMapStore';
-import { useExternalValue } from '../../utils/external-state';
+import {MouseEventHandler, ReactNode} from 'react';
+import {googleMapStore} from '../../store/googleMapStore';
+import {useExternalValue} from '../../utils/external-state';
 
-function BottomRightBox({ children }: { children: ReactNode }) {
+function BottomRightBox({children}: { children: ReactNode }) {
   return (
     <div
       style={{
-        zIndex: 999,
+        zIndex: 99999,
         position: 'fixed',
         bottom: 10,
         right: 10,
@@ -20,9 +20,9 @@ function BottomRightBox({ children }: { children: ReactNode }) {
 }
 
 function ControlButton({
-  onClick,
-  children,
-}: {
+                         onClick,
+                         children,
+                       }: {
   onClick: MouseEventHandler<HTMLButtonElement>;
   children: ReactNode;
 }) {

@@ -1,4 +1,4 @@
-import { Status, Wrapper } from '@googlemaps/react-wrapper';
+import {Status, Wrapper} from '@googlemaps/react-wrapper';
 import GoogleMap from './components/googleMaps/GoogleMap';
 import Layout from './components/ui/Layout';
 
@@ -12,7 +12,7 @@ const render = (status: Status) => {
       return (
         <>
           <GoogleMap
-            minHeight="100vh"
+            minHeight="80vh"
             initialPosition={{
               lat: 37.5056102333107,
               lng: 127.05081496722168,
@@ -24,11 +24,11 @@ const render = (status: Status) => {
   }
 };
 
-function ReactWrapperWithTanstackQueryRoot({ apiKey }: { apiKey: string }) {
+function ReactWrapperWithTanstackQueryRoot({apiKey}: { apiKey: string }) {
   return (
     <>
-      <Wrapper apiKey={`${apiKey}`} render={render} />
-      <Layout />
+      <Wrapper apiKey={`${apiKey}`} render={render}/>
+      <Layout/>
     </>
   );
 }

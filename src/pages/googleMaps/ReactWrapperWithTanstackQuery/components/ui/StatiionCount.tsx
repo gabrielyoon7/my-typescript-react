@@ -1,11 +1,11 @@
-import { useStations } from '../../query/markerQuery';
-import { ReactNode } from 'react';
+import {useStations} from '../../query/markerQuery';
+import {ReactNode} from 'react';
 
-function TopRightBox({ children }: { children: ReactNode }) {
+function TopRightBox({children}: { children: ReactNode }) {
   return (
     <div
       style={{
-        zIndex: 999,
+        zIndex: 99999,
         position: 'fixed',
         top: 10,
         right: 10,
@@ -20,7 +20,7 @@ function TopRightBox({ children }: { children: ReactNode }) {
 
 function StationCount() {
   // react-query
-  const { isFetching, ...queryInfo } = useStations();
+  const {isFetching, ...queryInfo} = useStations();
 
   if (isFetching) {
     return <TopRightBox>⌛</TopRightBox>;
