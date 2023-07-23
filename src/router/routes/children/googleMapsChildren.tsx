@@ -5,6 +5,7 @@ import ReactWrapperWithTanstackQueryRoot
   from "../../../pages/googleMaps/ReactWrapperWithTanstackQuery/ReactWrapperWithTanstackQueryRoot.tsx";
 import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
 import {ReactQueryDevtools} from "@tanstack/react-query-devtools";
+import MarkerClustererRoot from "../../../pages/googleMaps/MarkerClusterer/MarkerClustererRoot.tsx";
 
 const queryClient = new QueryClient();
 
@@ -47,6 +48,13 @@ export const googleMapsChildren: Route[] = [
       </QueryClientProvider>
     ),
     title: 'React Wrapper With TanstackQuery',
+  },
+  {
+    path: 'marker-clusterer',
+    element: (
+      <MarkerClustererRoot/>
+    ),
+    title: 'Marker Clusterer',
   },
 
 ];
