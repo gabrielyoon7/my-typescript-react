@@ -19,6 +19,7 @@ import BatchRoot from "../../../pages/react/batch/BatchRoot.tsx";
 import SuspenseRoot from "../../../pages/react/suspense/SuspenseRoot.tsx";
 import Temp from "../../../pages/react/Temp.tsx";
 import {Route} from "../../../types/common.ts";
+import ListRoot from "../../../pages/react/list/ListRoot.tsx";
 
 export const reactChildren: Route[] = [
   {
@@ -120,6 +121,11 @@ export const reactChildren: Route[] = [
     path: 'suspense',
     element: <SuspenseRoot/>,
     title: 'Suspense 예제',
+  },
+  {
+    path: 'styled-components-list',
+    element: <ListRoot/>,
+    title: 'styled-components List 예제',
   },
   {
     path: 'temp',
