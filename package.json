@@ -13,6 +13,7 @@
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "@gabrielyoon7/layout-component": "^0.0.5",
     "@googlemaps/markerclusterer": "^2.3.2",
     "@googlemaps/react-wrapper": "^1.1.35",
     "@mui/icons-material": "^5.11.16",
