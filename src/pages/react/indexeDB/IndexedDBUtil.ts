@@ -2,15 +2,16 @@ export interface MyData {
   id: number;
   name: string;
 }
-
 class IndexedDBUtil {
   private dbName: string;
   private dbVersion: number;
   private db: IDBDatabase | null;
+  private objectStoreNames: string[];
 
-  constructor(dbName: string, dbVersion: number) {
+  constructor(dbName: string, dbVersion: number, objectStoreNames: string[]) {
     this.dbName = dbName;
     this.dbVersion = dbVersion;
+    this.objectStoreNames = objectStoreNames;
     this.db = null;
   }
 
@@ -20,8 +21,10 @@ class IndexedDBUtil {
 
       request.onupgradeneeded = (event) => {
         const db = (event.target as IDBOpenDBRequest).result;
-        if (!db.objectStoreNames.contains('myData')) {
-          db.createObjectStore('myData', {keyPath: 'id', autoIncrement: true});
+        for (const storeName of this.objectStoreNames) {
+          if (!db.objectStoreNames.contains(storeName)) {
+            db.createObjectStore(storeName, { keyPath: 'id', autoIncrement: true });
+          }
         }
       };
 
@@ -43,32 +46,28 @@ class IndexedDBUtil {
     }
   }
 
-  public async addData(data: MyData): Promise<void> {
+  public async addData(storeName: string, data: MyData): Promise<void> {
     return new Promise<void>((resolve, reject) => {
       if (!this.db) {
-        reject(new Error('데이터가 없습니다. open()을 호출해주세요.'));
+        reject(new Error('.open()이 호출되지 않았습니다.'));
         return;
       }
 
-      const transaction = this.db.transaction(['myData'], 'readwrite');
-      const objectStore = transaction.objectStore('myData');
+      const transaction = this.db.transaction([storeName], 'readwrite');
+      const objectStore = transaction.objectStore(storeName);
       const request = objectStore.add(data);
 
       request.onsuccess = () => {
-        console.log('데이터 저장 성공');
-        this.close();
         resolve();
       };
 
       request.onerror = (event) => {
         const error = (event.target as IDBRequest).error;
         console.error('Error:', error);
-        this.close();
         reject(error);
       };
     });
   }
-
 }
 
 export default IndexedDBUtil;
