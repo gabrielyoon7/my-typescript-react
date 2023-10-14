@@ -1,4 +1,4 @@
-export interface IndexedDBDataType<K,T> {
+export interface IndexedDBDataType<K, T> {
   id: K;
   data: T;
 }
@@ -6,7 +6,7 @@ export interface IndexedDBDataType<K,T> {
 const OBJECT_STORE_NAMES = ['myData', 'otherData'] as const;
 type objectStoreNamesType = typeof OBJECT_STORE_NAMES[number];
 
-class IndexedDBUtil<K,T> {
+class IndexedDBUtil<K, T> {
   private readonly dbName: string;
   private readonly dbVersion: number;
   private db: IDBDatabase | null;
@@ -48,7 +48,10 @@ class IndexedDBUtil<K,T> {
     }
   }
 
-  public async addData(storeName: objectStoreNamesType, data: IndexedDBDataType<K,T>): Promise<void> {
+  private async performDBOperation(
+    storeName: objectStoreNamesType,
+    operation: (store: IDBObjectStore) => IDBRequest
+  ): Promise<void> {
     return new Promise<void>((resolve, reject) => {
       if (!this.db) {
         reject(new Error('.open()이 호출되지 않았습니다.'));
@@ -57,7 +60,8 @@ class IndexedDBUtil<K,T> {
 
       const transaction = this.db.transaction([storeName], 'readwrite');
       const objectStore = transaction.objectStore(storeName);
-      const request = objectStore.add(data);
+
+      const request = operation(objectStore);
 
       request.onsuccess = () => {
         resolve();
@@ -69,6 +73,10 @@ class IndexedDBUtil<K,T> {
         reject(error);
       };
     });
+  }
+
+  public async addData(storeName: objectStoreNamesType, data: IndexedDBDataType<K, T>): Promise<void> {
+    return this.performDBOperation(storeName, (store) => store.add(data));
   }
 
   public async addMultipleData(storeName: objectStoreNamesType, dataArray: IndexedDBDataType<K, T>[]): Promise<void> {
@@ -108,28 +116,8 @@ class IndexedDBUtil<K,T> {
   }
 
   public async removeAllData(storeName: objectStoreNamesType): Promise<void> {
-    return new Promise<void>((resolve, reject) => {
-      if (!this.db) {
-        reject(new Error('.open()이 호출되지 않았습니다.'));
-        return;
-      }
-
-      const transaction = this.db.transaction([storeName], 'readwrite');
-      const objectStore = transaction.objectStore(storeName);
-      const request = objectStore.clear();
-
-      request.onsuccess = () => {
-        resolve();
-      };
-
-      request.onerror = (event) => {
-        const error = (event.target as IDBRequest).error;
-        console.error('Error:', error);
-        reject(error);
-      };
-    });
+    return this.performDBOperation(storeName, (store) => store.clear());
   }
-
 }
 
 export default IndexedDBUtil;
