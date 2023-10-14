@@ -20,6 +20,7 @@ import SuspenseRoot from "../../../pages/react/suspense/SuspenseRoot.tsx";
 import Temp from "../../../pages/react/Temp.tsx";
 import {Route} from "../../../types/common.ts";
 import ListRoot from "../../../pages/react/list/ListRoot.tsx";
+import IndexedDBRoot from "../../../pages/react/indexeDB/IndexedDBRoot.tsx";
 
 export const reactChildren: Route[] = [
   {
@@ -126,6 +127,11 @@ export const reactChildren: Route[] = [
     path: 'styled-components-list',
     element: <ListRoot/>,
     title: 'styled-components List 예제',
+  },
+  {
+    path: 'indexed-db',
+    element: <IndexedDBRoot/>,
+    title: 'IndexedDB 예제',
   },
   {
     path: 'temp',
