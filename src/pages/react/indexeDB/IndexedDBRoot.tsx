@@ -3,7 +3,7 @@ import IndexedDBUtil, {MyData} from "./IndexedDBUtil.ts";
 
 function IndexedDBRoot() {
   useEffect(() => {
-    const dbUtil = new IndexedDBUtil('myDB', 1, ['myData', 'otherData']);
+    const dbUtil = new IndexedDBUtil('myDB', 1);
 
     dbUtil.open()
       .then(() => {

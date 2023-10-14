@@ -2,16 +2,17 @@ export interface MyData {
   id: number;
   name: string;
 }
+const OBJECT_STORE_NAMES = ['myData', 'otherData'] as const;
+type objectStoreNamesType = typeof OBJECT_STORE_NAMES[number]
+
 class IndexedDBUtil {
   private dbName: string;
   private dbVersion: number;
   private db: IDBDatabase | null;
-  private objectStoreNames: string[];
 
-  constructor(dbName: string, dbVersion: number, objectStoreNames: string[]) {
+  constructor(dbName: string, dbVersion: number) {
     this.dbName = dbName;
     this.dbVersion = dbVersion;
-    this.objectStoreNames = objectStoreNames;
     this.db = null;
   }
 
@@ -21,7 +22,7 @@ class IndexedDBUtil {
 
       request.onupgradeneeded = (event) => {
         const db = (event.target as IDBOpenDBRequest).result;
-        for (const storeName of this.objectStoreNames) {
+        for (const storeName of OBJECT_STORE_NAMES) {
           if (!db.objectStoreNames.contains(storeName)) {
             db.createObjectStore(storeName, { keyPath: 'id', autoIncrement: true });
           }
@@ -46,7 +47,7 @@ class IndexedDBUtil {
     }
   }
 
-  public async addData(storeName: string, data: MyData): Promise<void> {
+  public async addData(storeName: objectStoreNamesType, data: MyData): Promise<void> {
     return new Promise<void>((resolve, reject) => {
       if (!this.db) {
         reject(new Error('.open()이 호출되지 않았습니다.'));
