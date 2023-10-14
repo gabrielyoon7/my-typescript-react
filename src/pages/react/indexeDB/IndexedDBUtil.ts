@@ -7,8 +7,8 @@ const OBJECT_STORE_NAMES = ['myData', 'otherData'] as const;
 type objectStoreNamesType = typeof OBJECT_STORE_NAMES[number];
 
 class IndexedDBUtil<K,T> {
-  private dbName: string;
-  private dbVersion: number;
+  private readonly dbName: string;
+  private readonly dbVersion: number;
   private db: IDBDatabase | null;
 
   constructor(dbName: string, dbVersion: number) {
@@ -70,6 +70,43 @@ class IndexedDBUtil<K,T> {
       };
     });
   }
+
+  public async addMultipleData(storeName: objectStoreNamesType, dataArray: IndexedDBDataType<K, T>[]): Promise<void> {
+    return new Promise<void>((resolve, reject) => {
+      if (!this.db) {
+        reject(new Error('.open()이 호출되지 않았습니다.'));
+        return;
+      }
+
+      const transaction = this.db.transaction([storeName], 'readwrite');
+      const objectStore = transaction.objectStore(storeName);
+
+      const promises = dataArray.map((data) => {
+        return new Promise<void>((resolve, reject) => {
+          const request = objectStore.add(data);
+
+          request.onsuccess = () => {
+            resolve();
+          };
+
+          request.onerror = (event) => {
+            const error = (event.target as IDBRequest).error;
+            console.error('Error:', error);
+            reject(error);
+          };
+        });
+      });
+
+      Promise.all(promises)
+        .then(() => {
+          resolve();
+        })
+        .catch((error) => {
+          reject(error);
+        });
+    });
+  }
+
 }
 
 export default IndexedDBUtil;
