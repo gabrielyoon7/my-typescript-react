@@ -1,12 +1,12 @@
-export interface IndexedDBDataType<T> {
-  id: number;
+export interface IndexedDBDataType<K,T> {
+  id: K;
   data: T;
 }
 
 const OBJECT_STORE_NAMES = ['myData', 'otherData'] as const;
 type objectStoreNamesType = typeof OBJECT_STORE_NAMES[number];
 
-class IndexedDBUtil<T> {
+class IndexedDBUtil<K,T> {
   private dbName: string;
   private dbVersion: number;
   private db: IDBDatabase | null;
@@ -48,7 +48,7 @@ class IndexedDBUtil<T> {
     }
   }
 
-  public async addData(storeName: objectStoreNamesType, data: IndexedDBDataType<T>): Promise<void> {
+  public async addData(storeName: objectStoreNamesType, data: IndexedDBDataType<K,T>): Promise<void> {
     return new Promise<void>((resolve, reject) => {
       if (!this.db) {
         reject(new Error('.open()이 호출되지 않았습니다.'));
