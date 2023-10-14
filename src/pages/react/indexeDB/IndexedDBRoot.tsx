@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import IndexedDBUtil, {MyData} from "./IndexedDBUtil.ts";
 
 function IndexedDBRoot() {
@@ -9,14 +9,6 @@ function IndexedDBRoot() {
       .then(() => {
         const data: MyData = {id: 1, name: 'John Doe'};
         return dbUtil.addData(data);
-      })
-      .then(() => {
-        console.log('Data added successfully');
-        dbUtil.close();
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-        dbUtil.close();
       });
 
   }, []);

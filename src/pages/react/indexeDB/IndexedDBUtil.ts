@@ -46,7 +46,7 @@ class IndexedDBUtil {
   public async addData(data: MyData): Promise<void> {
     return new Promise<void>((resolve, reject) => {
       if (!this.db) {
-        reject(new Error('Database is not open.'));
+        reject(new Error('데이터가 없습니다. open()을 호출해주세요.'));
         return;
       }
 
@@ -55,11 +55,16 @@ class IndexedDBUtil {
       const request = objectStore.add(data);
 
       request.onsuccess = () => {
+        console.log('데이터 저장 성공');
+        this.close();
         resolve();
       };
 
       request.onerror = (event) => {
-        reject((event.target as IDBRequest).error);
+        const error = (event.target as IDBRequest).error;
+        console.error('Error:', error);
+        this.close();
+        reject(error);
       };
     });
   }
