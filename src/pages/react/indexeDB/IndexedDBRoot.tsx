@@ -1,5 +1,5 @@
 import React, {useEffect} from "react";
-import IndexedDBUtil, {MyData} from "./IndexedDBUtil.ts";
+import IndexedDBUtil, {IndexedDBDataType} from "./IndexedDBUtil.ts";
 
 function IndexedDBRoot() {
   useEffect(() => {
@@ -7,8 +7,8 @@ function IndexedDBRoot() {
 
     dbUtil.open()
       .then(() => {
-        const data: MyData = { id: 1, name: 'John Doe' };
-        return dbUtil.addData('myData', data);
+        const data: IndexedDBDataType<string> = { id: 1, data: 'John Doe' };
+        dbUtil.addData('myData', data);
       })
       .then(() => {
         console.log('Data added successfully to myData');
@@ -22,8 +22,8 @@ function IndexedDBRoot() {
 
     dbUtil.open()
       .then(() => {
-        const data: MyData = { id: 1, name: 'Gabriel Yoon' };
-        return dbUtil.addData('otherData', data);
+        const data: IndexedDBDataType<number> = { id: 1, data: 2 };
+        dbUtil.addData('otherData', data);
       })
       .then(() => {
         console.log('Data added successfully to otherData');
