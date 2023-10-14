@@ -44,6 +44,16 @@ function IndexedDBRoot() {
     });
   };
 
+  const getAllData = () => {
+    dbUtil.open().then(() => {
+      return dbUtil.getAllData('myData');
+    }).then((data) => {
+      alert(`데이터 개수: ${data.length}`);
+    }).then(() => {
+      dbUtil.close();
+    });
+  };
+
 
   return (
     <div>
@@ -51,6 +61,7 @@ function IndexedDBRoot() {
       <button onClick={addRandomStringArrayData}>add random string array data</button>
       <button onClick={addRandomStringSingleData}>add random string single data</button>
       <button onClick={removeAllData}>remove all data</button>
+      <button onClick={getAllData}>get all data</button>
     </div>
   );
 }

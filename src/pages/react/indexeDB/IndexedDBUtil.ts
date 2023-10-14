@@ -118,6 +118,31 @@ class IndexedDBUtil<K, T> {
   public async removeAllData(storeName: objectStoreNamesType): Promise<void> {
     return this.performDBOperation(storeName, (store) => store.clear());
   }
+
+  public async getAllData(storeName: objectStoreNamesType): Promise<IndexedDBDataType<K, T>[]> {
+    return new Promise<IndexedDBDataType<K, T>[]>((resolve, reject) => {
+      if (!this.db) {
+        reject(new Error('.open()이 호출되지 않았습니다.'));
+        return;
+      }
+
+      const transaction = this.db.transaction([storeName], 'readonly');
+      const objectStore = transaction.objectStore(storeName);
+      const request = objectStore.getAll();
+
+      request.onsuccess = () => {
+        const data = request.result;
+        resolve(data);
+      };
+
+      request.onerror = (event) => {
+        const error = (event.target as IDBRequest).error;
+        console.error('Error:', error);
+        reject(error);
+      };
+    });
+  }
+
 }
 
 export default IndexedDBUtil;
