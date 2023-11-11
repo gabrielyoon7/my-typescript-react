@@ -1,5 +1,5 @@
 import React from "react";
-// import FlyOutMenu from "./FlyOutMenu";
+import FlyOutMenu from "./FlyOutMenu.tsx";
 
 const sources = [
   "https://images.pexels.com/photos/939478/pexels-photo-939478.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
@@ -10,8 +10,8 @@ const sources = [
 function Image({source}: { source: string }) {
   return (
     <div className="image-item">
-      {/*<img src={source} alt="Squirrel"/>*/}
-      {/*<FlyOutMenu/>*/}
+      <img src={source} alt="Squirrel"/>
+      <FlyOutMenu/>
     </div>
   );
 }
