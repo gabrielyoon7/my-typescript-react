@@ -21,6 +21,7 @@ import Temp from "../../../pages/react/Temp.tsx";
 import {Route} from "../../../types/common.ts";
 import ListRoot from "../../../pages/react/list/ListRoot.tsx";
 import IndexedDBRoot from "../../../pages/react/indexeDB/IndexedDBRoot.tsx";
+import ImageListContextAPI from "../../../pages/react/compounds/context-api/ImageListContextAPI.tsx";
 
 export const reactChildren: Route[] = [
   {
@@ -132,6 +133,11 @@ export const reactChildren: Route[] = [
     path: 'indexed-db',
     element: <IndexedDBRoot/>,
     title: 'IndexedDB 예제',
+  },
+  {
+    path: 'compound-pattern-context-api',
+    element: <ImageListContextAPI/>,
+    title: 'Compound Pattern with Context API'
   },
   {
     path: 'temp',
