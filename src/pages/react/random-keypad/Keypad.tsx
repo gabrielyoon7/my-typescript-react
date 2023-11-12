@@ -9,13 +9,26 @@ interface KeypadProps {
 function Keypad({numbers, setNumbers, maxLength}: KeypadProps) {
 
   const keypadNumbers = [...Array(10)].map((_, index) => index);
-  const randomNumbers = [...keypadNumbers].sort(() => Math.random() - 0.5);
+  const randomNumbers: (number | string)[] = [...keypadNumbers].sort(() => Math.random() - 0.5);
+  randomNumbers.splice(10 - 1, 0, 'clear');
+  randomNumbers.splice(10 + 1, 0, 'delete');
 
-  const handleClick = (number: number) => {
-    if (maxLength === numbers.length) {
-      return;
+  const handleClickNumberButton = (number: number) => {
+    if (maxLength !== numbers.length) {
+      setNumbers((prevNumbers) => [...prevNumbers, number]);
     }
-    setNumbers((prevNumbers) => [...prevNumbers, number]);
+  };
+
+  const handleClickDeleteButton = () => {
+    if (numbers.length !== 0) {
+      setNumbers((prevNumbers) => prevNumbers.slice(0, prevNumbers.length - 1));
+    }
+  };
+
+  const handleClickClearButton = () => {
+    if (numbers.length !== 0) {
+      setNumbers([]);
+    }
   };
 
   return (
@@ -24,7 +37,15 @@ function Keypad({numbers, setNumbers, maxLength}: KeypadProps) {
         <button
           key={value}
           className="item"
-          onClick={() => handleClick(value)}
+          onClick={() => {
+            if (typeof value === 'number') {
+              handleClickNumberButton(value);
+            } else if (value === 'clear') {
+              handleClickClearButton();
+            } else if (value === 'delete') {
+              handleClickDeleteButton();
+            }
+          }}
         >
           {value}
         </button>
