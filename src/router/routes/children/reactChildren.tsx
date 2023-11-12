@@ -22,6 +22,7 @@ import {Route} from "../../../types/common.ts";
 import ListRoot from "../../../pages/react/list/ListRoot.tsx";
 import IndexedDBRoot from "../../../pages/react/indexeDB/IndexedDBRoot.tsx";
 import ImageListContextAPI from "../../../pages/react/compounds/context-api/ImageListContextAPI.tsx";
+import RandomKeypadRoot from "../../../pages/react/random-keypad/RandomKeypadRoot.tsx";
 
 export const reactChildren: Route[] = [
   {
@@ -133,6 +134,11 @@ export const reactChildren: Route[] = [
     path: 'indexed-db',
     element: <IndexedDBRoot/>,
     title: 'IndexedDB 예제',
+  },
+  {
+    path: 'random-keypad',
+    element: <RandomKeypadRoot/>,
+    title: 'Random Keypad'
   },
   {
     path: 'compound-pattern-context-api',
