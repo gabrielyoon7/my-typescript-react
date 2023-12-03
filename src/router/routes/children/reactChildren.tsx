@@ -23,6 +23,7 @@ import ListRoot from "../../../pages/react/list/ListRoot.tsx";
 import IndexedDBRoot from "../../../pages/react/indexeDB/IndexedDBRoot.tsx";
 import ImageListContextAPI from "../../../pages/react/compounds/context-api/ImageListContextAPI.tsx";
 import RandomKeypadRoot from "../../../pages/react/random-keypad/RandomKeypadRoot.tsx";
+import Rendering from "../../../pages/react/rendering/Rendering.tsx";
 
 export const reactChildren: Route[] = [
   {
@@ -144,6 +145,11 @@ export const reactChildren: Route[] = [
     path: 'compound-pattern-context-api',
     element: <ImageListContextAPI/>,
     title: 'Compound Pattern with Context API'
+  },
+  {
+    path: 'rendering',
+    element: <Rendering/>,
+    title: '렌더링 테스트'
   },
   {
     path: 'temp',
