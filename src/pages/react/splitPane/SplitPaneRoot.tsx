@@ -1,4 +1,4 @@
-import SplitPane from "./SplitPane.tsx";
+import SplitPane from "./split-pane/SplitPane.tsx";
 
 function SplitPaneRoot() {
   return (

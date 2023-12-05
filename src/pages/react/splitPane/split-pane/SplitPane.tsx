@@ -1,9 +1,10 @@
 import ErrorBoundary from "./ErrorBoundary.tsx";
+import SplitPaneRenderer from "./SplitPaneRenderer.tsx";
 
 function SplitPane() {
   return (
     <ErrorBoundary>
-      <h1>SplitPane</h1>
+      <SplitPaneRenderer/>
     </ErrorBoundary>
   );
 }
