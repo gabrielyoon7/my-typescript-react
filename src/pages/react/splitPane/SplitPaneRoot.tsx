@@ -1,8 +1,8 @@
+import SplitPane from "./SplitPane.tsx";
+
 function SplitPaneRoot() {
   return (
-    <>
-      <h1>SplitPaneRoot</h1>
-    </>
+    <SplitPane></SplitPane>
   );
 }
 
